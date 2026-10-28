@@ -101,7 +101,7 @@ Conventions for the tests:
 - [x] **T23 Tomorrow and EOD** — module: due-date-resolution — FR-10
   **Done when:** `tomorrow` = meeting+1; `EOD` = meeting date; `by EOD tomorrow` = meeting+1.
 
-- [ ] **T24 Day+month without year** — module: due-date-resolution — FR-10
+- [x] **T24 Day+month without year** — module: due-date-resolution — FR-10
   **Done when:** `10 Sep`, `Oct 3rd`, `15 October` resolve to the nearest date on/after the meeting date; a 2026-12-20 meeting with `5 Jan` → 2027-01-05.
 
 - [ ] **T25 Unresolvable phrases** — module: due-date-resolution — FR-10

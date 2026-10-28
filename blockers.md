@@ -41,4 +41,4 @@ open sections below as they are discovered; when resolved, they move to
 
 | ID | Type | Task | Title | Priority | Impact | Source | Fix needed | Resolution | Raised | Resolved |
 |---|---|---|---|---|---|---|---|---|---|---|
-| _None yet_ | | | | | | | | | | |
+| D-001 | T01 | Tech stack and T1 scope | Medium | Project scaffold; tasks.md has no scaffold task (T01 is fixtures) | User request "do T1" vs tasks.md T01 | Choose stack; decide scope of T1 | Python (setuptools, pytest) chosen; scaffold done without ticking T01, fixtures still pending | Python 3.11+ + pytest chosen by user; scaffold committed, T01 left unchecked | 2026-10-28 | 2026-10-28 |

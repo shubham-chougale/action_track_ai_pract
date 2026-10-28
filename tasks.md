@@ -132,7 +132,7 @@ Conventions for the tests:
 - [x] **T32 Owner: ambiguous** — module: owner-resolution — FR-6
   **Done when:** `Priya` and `Rahul` in 2026-09-30-q4-offsite.md resolve to "ambiguous", keep raw text, and are flagged.
 
-- [ ] **T33 Owner: first name + initial** — module: owner-resolution — FR-6
+- [x] **T33 Owner: first name + initial** — module: owner-resolution — FR-6
   **Done when:** `Priya N.` → Priya Nair and `Priya S.` → Priya Shah; an initial matching nobody gives "unknown".
 
 - [ ] **T34 Owner: non-person and missing** — module: owner-resolution — FR-7

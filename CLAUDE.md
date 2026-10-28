@@ -74,6 +74,17 @@ Modules: `note-scanning`, `meeting-metadata`, `action-item-extraction`,
 - Whenever you need to ask the user a question, use the AskUserQuestion tool.
 - Don't commit unless asked.
 
+## Task completion (`tasks.md`)
+
+- When a task is completed, mark it done right away: change `[ ]` to `[x]` in
+  **both** the module's `modules/<name>/tasks.md` and the top-level `tasks.md`.
+  Cross-cutting tasks (T01, T68-T79) and T42 exist only in the top-level file
+  or the owning module; tick every place the task appears.
+- Only tick a task after its done-when test passes (and no earlier test
+  regresses).
+- If a task is partially done or blocked, leave it unchecked and add a short
+  note under it explaining why (also log blockers in `blockers.md`).
+
 ## Blocker tracking (`blockers.md`)
 
 Keep `blockers.md` up to date automatically, without being asked:

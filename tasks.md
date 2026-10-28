@@ -272,7 +272,7 @@ Conventions for the tests:
 - [x] **T71 Check 4: billing initials** — **Done when:** `Priya N.` / `Priya S.` billing items show Priya Nair / Priya Shah. (SC3)
 - [x] **T72 Check 5: unassigned** — **Done when:** "Someone to update the CRM notes", "TBD to write the design-system changelog", "Everyone to submit…", "Team to decide…" all appear under `--owner unassigned`.
 - [x] **T73 Check 6: co-owners** — **Done when:** "Anita & Rahul to agree on the component API" has owners Anita Desai and Rahul Mehta.
-- [ ] **T74 Check 7: decoys** — **Done when:** the security-review template item and commented item are flagged, never overdue, and absent from every follow-up draft.
+- [x] **T74 Check 7: decoys** — **Done when:** the security-review template item and commented item are flagged, never overdue, and absent from every follow-up draft.
 - [ ] **T75 Check 8: owner filter** — **Done when:** `list --owner Priya` fails listing both Priyas; `list --owner "Priya Nair"` works.
 - [ ] **T76 Check 9: followup drafts** — **Done when:** `followup "Priya Nair"` creates one draft, sends nothing, and a second run creates a second draft. (SC4)
 - [ ] **T77 Check 10: re-ingest** — **Done when:** after using `done`, a second `ingest notes` reports 0 new items and changes nothing. (SC5)

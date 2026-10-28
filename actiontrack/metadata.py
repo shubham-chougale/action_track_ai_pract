@@ -86,7 +86,7 @@ def parse_metadata(text: str) -> Metadata:
     fields = front[0] if front else _header_fields(lines)
 
     meta = Metadata(
-        title=fields.get("title") or None,
+        title=fields.get("title", "").strip("'\"").strip() or None,
         attendees=_split_attendees(fields.get("attendees", "")),
     )
     raw_date = fields.get("date", "").strip().strip("'\"")

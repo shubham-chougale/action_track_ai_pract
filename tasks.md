@@ -45,7 +45,7 @@ Conventions for the tests:
 - [x] **T07 Meeting metadata, header style A** — module: meeting-metadata — FR-4
   **Done when:** a style A fixture returns title, date `YYYY-MM-DD` and the attendee list.
 
-- [ ] **T08 Meeting metadata, header style B** — module: meeting-metadata — FR-4
+- [x] **T08 Meeting metadata, header style B** — module: meeting-metadata — FR-4
   **Done when:** 2026-09-16-standup.md (YAML front matter, bracketed attendees) returns the same shape as style A.
 
 - [ ] **T09 Missing/invalid date reasons** — module: meeting-metadata — FR-4, FR-5

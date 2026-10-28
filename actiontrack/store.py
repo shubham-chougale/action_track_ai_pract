@@ -75,6 +75,14 @@ class Store:
         for key, value in changes.items():
             if not hasattr(item, key):
                 raise ValueError(f"unknown item field: {key}")
+            if key == "status" and item.status_manual:
+                continue  # a manual done always sticks
             setattr(item, key, value)
+        self._save()
+        return item
+
+    def mark_done(self, item_id: int) -> Item:
+        item = self._items[item_id]
+        item.status, item.status_manual = "done", True
         self._save()
         return item

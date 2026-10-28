@@ -35,7 +35,7 @@ Conventions for the tests:
   Add a source to an item; change status or due date.
   **Done when:** after the update, ID and first-seen order are unchanged and earlier sources are all still present.
 
-- [ ] **T06 Manual-done marker** — module: persistence — FR-12, FR-17
+- [x] **T06 Manual-done marker** — module: persistence — FR-12, FR-17
   **Done when:** an item marked done manually keeps status done even after an update that sets it open from a note.
 
 ---

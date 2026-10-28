@@ -1,5 +1,6 @@
 """Item listing: status, filters and output for `actiontrack list`."""
 
+from actiontrack.display import owner_label
 from actiontrack.store import Item
 
 
@@ -10,3 +11,26 @@ def item_status(item: Item, today: str) -> str:
     if item.due and not item.flagged and item.due < today:
         return "overdue"
     return "open"
+
+
+def sort_items(items: list[Item]) -> list[Item]:
+    """Soonest due date first, items without a resolved date last; first-seen order breaks ties."""
+    return sorted(items, key=lambda i: (i.due is None, i.due or "", i.first_seen_order))
+
+
+def _source_label(item: Item) -> str:
+    latest = max(item.sources, key=lambda s: s["date"])
+    return f"{latest['file']} ({latest['date']})"
+
+
+def render_table(items: list[Item], today: str) -> str:
+    rows = [("ID", "Owner(s)", "Task", "Due", "Status", "Source")]
+    for item in sort_items(items):
+        rows.append((str(item.id), owner_label(item), item.task, item.due or "-",
+                     item_status(item, today), _source_label(item)))
+    widths = [max(len(r[c]) for r in rows) for c in range(len(rows[0]))]
+    lines = ["  ".join(cell.ljust(w) for cell, w in zip(r, widths)).rstrip() for r in rows]
+    lines.insert(1, "  ".join("-" * w for w in widths))
+    lines.append("")
+    lines.append(f"Total: {len(items)} items")
+    return "\n".join(lines)

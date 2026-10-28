@@ -2,9 +2,11 @@
 
 import argparse
 import sys
+from datetime import date
 
 from actiontrack.done import DoneError, describe, mark_done
 from actiontrack.ingest import ingest_folder
+from actiontrack.listing import render_table
 from actiontrack.report import format_report
 from actiontrack.scanner import FolderError
 from actiontrack.store import Store
@@ -20,6 +22,8 @@ def build_parser() -> argparse.ArgumentParser:
     ingest.add_argument("folder")
     done = sub.add_parser("done", help="mark an action item done")
     done.add_argument("id")
+    listing = sub.add_parser("list", help="show tracked action items")
+    listing.add_argument("--today", help="treat this YYYY-MM-DD as today (for stable results)")
     return parser
 
 
@@ -39,6 +43,9 @@ def main(argv: list[str] | None = None) -> int:
             print(f"error: {err}", file=sys.stderr)
             return 1
         print(f"Item already done: {describe(item)}" if already else f"Marked done: {describe(item)}")
+    elif args.command == "list":
+        today = args.today or date.today().isoformat()
+        print(render_table(Store().all(), today))
     return 0
 
 

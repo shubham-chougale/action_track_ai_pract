@@ -206,7 +206,7 @@ Conventions for the tests:
 - [x] **T51 Status definitions** — module: item-listing — FR-15
   **Done when:** with `--today 2026-10-28`: open item due 10-27 → overdue; due 10-28 → open; done item with past date → done; no-date item → open; flagged item with past date → never overdue; unresolved-date item → never overdue.
 
-- [ ] **T52 Default output order and columns** — module: item-listing — FR-16
+- [x] **T52 Default output order and columns** — module: item-listing — FR-16
   **Done when:** all items (including done) print sorted by due date, no-due-date last, with columns ID, Owner(s), Task, Due, Status, Source; the table ends with a total count.
 
 - [ ] **T53 Due, source and flag display** — module: item-listing — FR-16

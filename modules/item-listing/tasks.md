@@ -4,7 +4,7 @@ Tasks owned by this module, copied from the top-level `tasks.md` (do not edit he
 
 - [x] **T51 Status definitions** — FR: FR-15
   **Done when:** with `--today 2026-10-28`: open item due 10-27 → overdue; due 10-28 → open; done item with past date → done; no-date item → open; flagged item with past date → never overdue; unresolved-date item → never overdue.
-- [ ] **T52 Default output order and columns** — FR: FR-16
+- [x] **T52 Default output order and columns** — FR: FR-16
   **Done when:** all items (including done) print sorted by due date, no-due-date last, with columns ID, Owner(s), Task, Due, Status, Source; the table ends with a total count.
 - [ ] **T53 Due, source and flag display** — FR: FR-16
   **Done when:** unresolved date shows the raw phrase marked `?`; no date shows `-`; a flagged item shows a flag marker; a merged item shows its latest source plus the count of other mentions; a co-owned item appears under each owner.

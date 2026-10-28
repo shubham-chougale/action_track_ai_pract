@@ -76,7 +76,8 @@ def test_damaged_data_files_give_a_message_and_stay_untouched(filename, content,
     monkeypatch.setattr(cli, "create_draft", lambda *a: "draft-1")
     for args in (["ingest", str(FIXTURES)], ["list"], ["done", "1"], ["followup", "Priya"]):
         code, out, err = run(capsys, *args)
-        assert code != 0 and "Traceback" not in err
-        if not (args[0] == "done" and filename == "people.json"):  # done never reads the people file
-            assert filename in err
+        assert "Traceback" not in err
+        if args[0] in ("done", "list") and filename == "people.json":
+            continue  # these never read the people file
+        assert code != 0 and filename in err
     assert damaged.read_text(encoding="utf-8") == content

@@ -79,7 +79,7 @@ Conventions for the tests:
 - [x] **T17 Nested items independent** — module: action-item-extraction — FR-2
   **Done when:** Karan's item nested under Meera's in the offsite note yields two separate items with no link between them.
 
-- [ ] **T18 Decoys flagged** — module: action-item-extraction — FR-3
+- [x] **T18 Decoys flagged** — module: action-item-extraction — FR-3
   **Done when:** in 2026-10-09-security-review.md the fenced-block template item and the HTML-commented item are extracted, each carries a flag with reason "code block" / "comment", and the real items are not flagged.
 
 - [ ] **T19 Split line into owner, task, due phrase** — module: action-item-extraction — FR-9

@@ -12,7 +12,7 @@ Conventions for the tests:
 
 ## Phase 0 — Test fixtures
 
-- [ ] **T01 Small fixture notes** — module: all (test support) — FR: n/a
+- [x] **T01 Small fixture notes** — module: all (test support) — FR: n/a
   Build a few tiny hand-written notes under a test folder: one per header style, one with each checkbox marker, a nested pair, a code-block decoy, a comment decoy, an empty file, a binary file, a no-date file, a bad-date file, a `.txt` file.
   **Done when:** each fixture is listed in the test folder with a one-line comment of what it exercises, and the sample folder is untouched.
 

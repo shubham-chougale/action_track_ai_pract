@@ -14,7 +14,7 @@ Tasks owned by this module, copied from the top-level `tasks.md` (do not edit he
   **Done when:** an item marked done manually keeps status done even after an update that sets it open from a note.
 - [x] **T46 Idempotent re-ingest** — FR: FR-12, SC5
   **Done when:** a second `ingest` of the sample folder reports 0 new items, creates no duplicates, and the stored data is byte-for-byte unchanged.
-- [ ] **T47 Re-ingest after done and after new notes** — FR: FR-12
+- [x] **T47 Re-ingest after done and after new notes** — FR: FR-12
   **Done when:** after `done` on an item, re-ingest keeps it done; after adding one new note, only that note's new items and sources are added; existing IDs are unchanged.
 - [ ] **T48 Notes untouched** — FR: NFR
   **Done when:** file hashes of every note are identical before and after ingest.

@@ -183,7 +183,7 @@ Conventions for the tests:
 - [x] **T46 Idempotent re-ingest** — module: persistence — FR-12, SC5
   **Done when:** a second `ingest` of the sample folder reports 0 new items, creates no duplicates, and the stored data is byte-for-byte unchanged.
 
-- [ ] **T47 Re-ingest after done and after new notes** — module: persistence — FR-12
+- [x] **T47 Re-ingest after done and after new notes** — module: persistence — FR-12
   **Done when:** after `done` on an item, re-ingest keeps it done; after adding one new note, only that note's new items and sources are added; existing IDs are unchanged.
 
 - [ ] **T48 Notes untouched** — module: persistence — NFR

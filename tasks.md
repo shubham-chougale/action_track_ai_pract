@@ -266,7 +266,7 @@ Conventions for the tests:
 
 ## Phase 12 — Acceptance on the sample folder (requirement.md section 8)
 
-- [ ] **T68 Check 1: skips** — **Done when:** `ingest notes` skips exactly the 4 listed `.md` files with reasons, ignores the `.txt`, ingests 31. (SC1)
+- [x] **T68 Check 1: skips** — **Done when:** `ingest notes` skips exactly the 4 listed `.md` files with reasons, ignores the `.txt`, ingests 31. (SC1)
 - [ ] **T69 Check 2: quote item** — **Done when:** `list` shows "Priya to send the revised quote to Acme" once, done. (SC2)
 - [ ] **T70 Check 3: offsite ambiguity** — **Done when:** "Priya to own the hiring plan…" and "Rahul to prepare the architecture overview…" are flagged ambiguous owner. (SC3)
 - [ ] **T71 Check 4: billing initials** — **Done when:** `Priya N.` / `Priya S.` billing items show Priya Nair / Priya Shah. (SC3)

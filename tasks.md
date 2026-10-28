@@ -255,6 +255,7 @@ Conventions for the tests:
 
 - [ ] **T65 Create one draft** — module: gmail-draft — FR-21
   **Done when:** against the Gmail connector, `followup "Priya Nair"` creates exactly one draft, prints its link/ID, and no message is sent (the Sent folder is unchanged).
+  _Note: passes against a mocked connector; real Gmail draft not verified - claude -p has no Gmail connector here (blockers.md X-001)._
 
 - [x] **T66 Always new draft** — module: gmail-draft — FR-21
   **Done when:** running followup twice creates two drafts; the first draft is not modified or searched for.
@@ -276,6 +277,7 @@ Conventions for the tests:
 - [x] **T75 Check 8: owner filter** — **Done when:** `list --owner Priya` fails listing both Priyas; `list --owner "Priya Nair"` works.
 - [ ] **T76 Check 9: followup drafts** — **Done when:** `followup "Priya Nair"` creates one draft, sends nothing, and a second run creates a second draft. (SC4)
 - [ ] **T77 Check 10: re-ingest** — **Done when:** after using `done`, a second `ingest notes` reports 0 new items and changes nothing. (SC5)
+  _Note: passes against a mocked connector; real Gmail draft not verified - claude -p has no Gmail connector here (blockers.md X-001)._
 - [ ] **T78 Never-crash sweep** — **Done when:** every command run against the sample folder, the fixtures, and a folder of garbage files produces a message or report and never a crash; the notes folder stays unmodified. (NFR)
 - [ ] **T79 Windows run** — **Done when:** T68–T78 pass on Windows from a normal terminal, including paths with spaces.
 

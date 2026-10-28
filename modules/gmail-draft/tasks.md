@@ -4,6 +4,7 @@ Tasks owned by this module, copied from the top-level `tasks.md` (do not edit he
 
 - [ ] **T65 Create one draft** — FR: FR-21
   **Done when:** against the Gmail connector, `followup "Priya Nair"` creates exactly one draft, prints its link/ID, and no message is sent (the Sent folder is unchanged).
+  _Note: passes against a mocked connector; real Gmail draft not verified - claude -p has no Gmail connector here (blockers.md X-001)._
 - [x] **T66 Always new draft** — FR: FR-21
   **Done when:** running followup twice creates two drafts; the first draft is not modified or searched for.
 - [x] **T67 Connector failure** — FR: FR-22

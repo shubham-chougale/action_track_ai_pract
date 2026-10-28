@@ -2,7 +2,7 @@
 
 Tasks owned by this module, copied from the top-level `tasks.md` (do not edit here; change the top-level file and re-split).
 
-- [ ] **T36 Task text normalisation** — FR: FR-11
+- [x] **T36 Task text normalisation** — FR: FR-11
   **Done when:** wording that differs only by case, articles, punctuation, or the due phrase is treated as equal; clearly different tasks are not.
 - [ ] **T37 Same-owner match, different-owner no match** — FR: FR-11
   **Done when:** the same wording with different resolved owners stays as two items; the same owners with near-identical wording merge.

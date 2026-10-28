@@ -145,7 +145,7 @@ Conventions for the tests:
 
 ## Phase 6 — Merging
 
-- [ ] **T36 Task text normalisation** — module: duplicate-merging — FR-11
+- [x] **T36 Task text normalisation** — module: duplicate-merging — FR-11
   **Done when:** wording that differs only by case, articles, punctuation, or the due phrase is treated as equal; clearly different tasks are not.
 
 - [ ] **T37 Same-owner match, different-owner no match** — module: duplicate-merging — FR-11

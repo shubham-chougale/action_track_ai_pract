@@ -104,7 +104,7 @@ Conventions for the tests:
 - [x] **T24 Day+month without year** — module: due-date-resolution — FR-10
   **Done when:** `10 Sep`, `Oct 3rd`, `15 October` resolve to the nearest date on/after the meeting date; a 2026-12-20 meeting with `5 Jan` → 2027-01-05.
 
-- [ ] **T25 Unresolvable phrases** — module: due-date-resolution — FR-10
+- [x] **T25 Unresolvable phrases** — module: due-date-resolution — FR-10
   **Done when:** `mid-October`, `end of month`, `end of next week`, `for November`, `before the next review` each give empty date, keep the raw phrase, and set the "unresolved date" flag; no phrase gives empty date with no flag.
 
 - [ ] **T26 Determinism** — module: due-date-resolution — FR-10, NFR

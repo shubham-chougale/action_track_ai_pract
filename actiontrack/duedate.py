@@ -6,6 +6,8 @@ from datetime import date, timedelta
 
 from actiontrack.metadata import _MONTHS
 
+UNRESOLVED_DATE = "unresolved date"
+
 _LEAD = re.compile(r"^(?:by|due|on|for|until)\s+", re.I)
 _ISO = re.compile(r"^(\d{4})-(\d{2})-(\d{2})$")
 _WEEKDAY_PREFIX = r"(?:[a-z]+\.?,?\s+)?"
@@ -84,4 +86,6 @@ def resolve_due(phrase: str | None, meeting_date: str) -> Due:
         return Due(None, None)
     text = _LEAD.sub("", phrase.strip()).lower()
     resolved = _resolve(text, date.fromisoformat(meeting_date))
-    return Due(resolved.isoformat() if resolved else None, phrase)
+    if resolved is None:
+        return Due(None, phrase, UNRESOLVED_DATE)
+    return Due(resolved.isoformat(), phrase)

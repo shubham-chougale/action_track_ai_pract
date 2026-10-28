@@ -270,7 +270,7 @@ Conventions for the tests:
 - [x] **T69 Check 2: quote item** — **Done when:** `list` shows "Priya to send the revised quote to Acme" once, done. (SC2)
 - [x] **T70 Check 3: offsite ambiguity** — **Done when:** "Priya to own the hiring plan…" and "Rahul to prepare the architecture overview…" are flagged ambiguous owner. (SC3)
 - [x] **T71 Check 4: billing initials** — **Done when:** `Priya N.` / `Priya S.` billing items show Priya Nair / Priya Shah. (SC3)
-- [ ] **T72 Check 5: unassigned** — **Done when:** "Someone to update the CRM notes", "TBD to write the design-system changelog", "Everyone to submit…", "Team to decide…" all appear under `--owner unassigned`.
+- [x] **T72 Check 5: unassigned** — **Done when:** "Someone to update the CRM notes", "TBD to write the design-system changelog", "Everyone to submit…", "Team to decide…" all appear under `--owner unassigned`.
 - [ ] **T73 Check 6: co-owners** — **Done when:** "Anita & Rahul to agree on the component API" has owners Anita Desai and Rahul Mehta.
 - [ ] **T74 Check 7: decoys** — **Done when:** the security-review template item and commented item are flagged, never overdue, and absent from every follow-up draft.
 - [ ] **T75 Check 8: owner filter** — **Done when:** `list --owner Priya` fails listing both Priyas; `list --owner "Priya Nair"` works.

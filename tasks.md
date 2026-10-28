@@ -231,7 +231,7 @@ Conventions for the tests:
 
 ## Phase 10 — `followup` command
 
-- [ ] **T59 Item selection** — module: followup-email — FR-18
+- [x] **T59 Item selection** — module: followup-email — FR-18
   **Done when:** for Priya Nair the selection has her open and overdue items only; done, unassigned, ambiguous and flagged items are excluded; co-owned items appear for each co-owner; a merged item appears once.
 
 - [ ] **T60 Owner resolution in followup** — module: followup-email — FR-18

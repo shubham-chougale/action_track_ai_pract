@@ -16,5 +16,5 @@ Tasks owned by this module, copied from the top-level `tasks.md` (do not edit he
   **Done when:** `--status open|done|overdue` each return the right sets; `--due-before 2026-10-01` is strictly before and excludes no-date items; `--due-before 10/01/2026` errors with non-zero exit.
 - [x] **T57 Combined filters** — FR: FR-14
   **Done when:** owner + status + due-before together return only items satisfying all three.
-- [ ] **T58 `--today` override** — FR: FR-15
+- [x] **T58 `--today` override** — FR: FR-15
   **Done when:** the same data gives different overdue sets for two `--today` values; without `--today` the computer's date is used.

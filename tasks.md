@@ -224,7 +224,7 @@ Conventions for the tests:
 - [x] **T57 Combined filters** — module: item-listing — FR-14
   **Done when:** owner + status + due-before together return only items satisfying all three.
 
-- [ ] **T58 `--today` override** — module: item-listing — FR-15
+- [x] **T58 `--today` override** — module: item-listing — FR-15
   **Done when:** the same data gives different overdue sets for two `--today` values; without `--today` the computer's date is used.
 
 ---

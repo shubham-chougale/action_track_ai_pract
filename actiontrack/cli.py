@@ -62,8 +62,8 @@ def main(argv: list[str] | None = None) -> int:
             return 1
         print(f"Item already done: {describe(item)}" if already else f"Marked done: {describe(item)}")
     elif args.command == "list":
-        today = args.today or date.today().isoformat()
         try:
+            today = _iso_date(args.today, "--today") or date.today().isoformat()
             due_before = _iso_date(args.due_before, "--due-before")
         except ValueError as err:
             print(f"error: {err}", file=sys.stderr)

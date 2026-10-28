@@ -48,7 +48,7 @@ Conventions for the tests:
 - [x] **T08 Meeting metadata, header style B** — module: meeting-metadata — FR-4
   **Done when:** 2026-09-16-standup.md (YAML front matter, bracketed attendees) returns the same shape as style A.
 
-- [ ] **T09 Missing/invalid date reasons** — module: meeting-metadata — FR-4, FR-5
+- [x] **T09 Missing/invalid date reasons** — module: meeting-metadata — FR-4, FR-5
   **Done when:** untitled.md gives reason "missing date"; 2026-10-03-sales-pipeline.md gives "invalid date"; a note with `2026-02-30` gives "invalid date"; a note with no attendees and no title still returns a valid date.
 
 - [ ] **T10 No filename-date fallback** — module: meeting-metadata — FR-4

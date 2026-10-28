@@ -215,7 +215,7 @@ Conventions for the tests:
 - [x] **T54 Empty result and JSON** — module: item-listing — FR-16
   **Done when:** a filter with no matches prints `No items match`; `--json` output parses as valid JSON with the same items as the table.
 
-- [ ] **T55 Owner filter** — module: item-listing — FR-14
+- [x] **T55 Owner filter** — module: item-listing — FR-14
   **Done when:** `--owner "Priya Nair"` works; `--owner Priya` fails with a message listing both Priyas and non-zero exit; `--owner unassigned` shows only unassigned items.
 
 - [ ] **T56 Status and due-before filters** — module: item-listing — FR-14

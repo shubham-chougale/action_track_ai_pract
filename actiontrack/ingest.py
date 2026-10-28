@@ -53,6 +53,8 @@ def ingest_folder(folder: Path | str, base: Path | str | None = None) -> IngestR
     scan = scan_folder(folder)
     people = People.from_notes(scan.notes)
     mentions = [m for note in scan.notes for m in note_mentions(note, people)]
-    counts = merge_mentions(Store(base), mentions)
+    store = Store(base)
+    store.learn_people(people.names())
+    counts = merge_mentions(store, mentions)
     flagged = [m for m in mentions if m.flagged]
     return IngestResult(scan.scanned, len(scan.notes), scan.skipped, counts, flagged)

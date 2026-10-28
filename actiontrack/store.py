@@ -6,6 +6,7 @@ from pathlib import Path
 
 DATA_DIR_NAME = ".actiontrack"
 ITEMS_FILE = "items.json"
+PEOPLE_FILE = "people.json"
 
 
 def data_dir(base: Path | str | None = None) -> Path:
@@ -36,6 +37,7 @@ class Store:
 
     def __init__(self, base: Path | str | None = None):
         self.path = data_dir(base) / ITEMS_FILE
+        self._people_path = self.path.with_name(PEOPLE_FILE)
         self._next_id = 1
         self._items: dict[int, Item] = {}
         if self.path.exists():
@@ -46,6 +48,18 @@ class Store:
     def _save(self) -> None:
         raw = {"next_id": self._next_id, "items": [asdict(i) for i in self.all()]}
         self.path.write_text(json.dumps(raw, indent=2, sort_keys=True), encoding="utf-8")
+
+    def people_names(self) -> list[str]:
+        """Names learned from attendees, in first-seen order."""
+        if not self._people_path.exists():
+            return []
+        return json.loads(self._people_path.read_text(encoding="utf-8"))
+
+    def learn_people(self, names: list[str]) -> None:
+        known = self.people_names()
+        added = [n for n in dict.fromkeys(names) if n not in known]
+        if added:  # written only on change, so a repeat ingest leaves the file alone
+            self._people_path.write_text(json.dumps(known + added, indent=2), encoding="utf-8")
 
     def add(self, **values) -> Item:
         item = Item(id=self._next_id, first_seen_order=self._next_id, **values)

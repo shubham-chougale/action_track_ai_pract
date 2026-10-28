@@ -10,7 +10,7 @@ Tasks owned by this module, copied from the top-level `tasks.md` (do not edit he
   **Done when:** unresolved date shows the raw phrase marked `?`; no date shows `-`; a flagged item shows a flag marker; a merged item shows its latest source plus the count of other mentions; a co-owned item appears under each owner.
 - [x] **T54 Empty result and JSON** — FR: FR-16
   **Done when:** a filter with no matches prints `No items match`; `--json` output parses as valid JSON with the same items as the table.
-- [ ] **T55 Owner filter** — FR: FR-14
+- [x] **T55 Owner filter** — FR: FR-14
   **Done when:** `--owner "Priya Nair"` works; `--owner Priya` fails with a message listing both Priyas and non-zero exit; `--owner unassigned` shows only unassigned items.
 - [ ] **T56 Status and due-before filters** — FR: FR-14
   **Done when:** `--status open|done|overdue` each return the right sets; `--due-before 2026-10-01` is strictly before and excludes no-date items; `--due-before 10/01/2026` errors with non-zero exit.

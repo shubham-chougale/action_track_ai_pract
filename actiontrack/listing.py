@@ -3,6 +3,7 @@
 import json
 
 from actiontrack.display import owner_label, owner_labels
+from actiontrack.people import UNASSIGNED
 from actiontrack.store import Item
 
 
@@ -38,8 +39,18 @@ def _status_label(item: Item, today: str) -> str:
     return f"{status} [!]" if item.flagged else status
 
 
-def filter_items(items: list[Item], today: str, status: str | None = None) -> list[Item]:
-    return [i for i in items if status is None or item_status(i, today) == status]
+def _owned_by(item: Item, owner: str) -> bool:
+    if owner == UNASSIGNED:
+        return any(o["kind"] == "unassigned" for o in item.owners)
+    return any(o["kind"] == "person" and o["name"] == owner for o in item.owners)
+
+
+def filter_items(items: list[Item], today: str, owner: str | None = None,
+                 status: str | None = None) -> list[Item]:
+    """Items satisfying every given filter; `owner` is already a full name or "unassigned"."""
+    return [i for i in items
+            if (owner is None or _owned_by(i, owner))
+            and (status is None or item_status(i, today) == status)]
 
 
 def render_json(items: list[Item], today: str) -> str:

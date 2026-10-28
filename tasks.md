@@ -51,7 +51,7 @@ Conventions for the tests:
 - [x] **T09 Missing/invalid date reasons** — module: meeting-metadata — FR-4, FR-5
   **Done when:** untitled.md gives reason "missing date"; 2026-10-03-sales-pipeline.md gives "invalid date"; a note with `2026-02-30` gives "invalid date"; a note with no attendees and no title still returns a valid date.
 
-- [ ] **T10 No filename-date fallback** — module: meeting-metadata — FR-4
+- [x] **T10 No filename-date fallback** — module: meeting-metadata — FR-4
   **Done when:** a note named `2026-09-09-x.md` with no body date is reported missing date, not dated 2026-09-09.
 
 - [ ] **T11 Folder scan scope** — module: note-scanning — FR-1

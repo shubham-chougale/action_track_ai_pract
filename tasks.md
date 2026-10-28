@@ -24,7 +24,7 @@ Conventions for the tests:
   Create/locate the hidden `.actiontrack/` folder in the current directory.
   **Done when:** running in directory A then directory B creates two separate `.actiontrack/` folders; data written in A is invisible from B.
 
-- [ ] **T03 Item store: create and read** — module: persistence — FR-12, section 6
+- [x] **T03 Item store: create and read** — module: persistence — FR-12, section 6
   Store an item with all fields from section 6 (owners, task, original line, due/raw phrase, status + manual flag, flag + reason, sources, first-seen order) and read it back.
   **Done when:** an item written, then read in a fresh process, returns every field unchanged.
 

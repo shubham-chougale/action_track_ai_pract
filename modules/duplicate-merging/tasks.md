@@ -8,7 +8,7 @@ Tasks owned by this module, copied from the top-level `tasks.md` (do not edit he
   **Done when:** the same wording with different resolved owners stays as two items; the same owners with near-identical wording merge.
 - [x] **T38 Quote item merges across three notes** — FR: FR-11
   **Done when:** "Priya to send the revised quote to Acme" from 09-01, 09-08 (`Priya N.`, em dash) and 09-15 (`[x]`) becomes one item with one ID, three sources, status done.
-- [ ] **T39 Latest-wins for status** — FR: FR-11
+- [x] **T39 Latest-wins for status** — FR: FR-11
   **Done when:** a later `[x]` sets done; a later `[ ]` after that reopens it; processing notes in date order, not file order, gives the same result.
 - [ ] **T40 Latest-wins for due date** — FR: FR-11
   **Done when:** a later due date replaces an earlier one; a later mention with no due date keeps the existing one.

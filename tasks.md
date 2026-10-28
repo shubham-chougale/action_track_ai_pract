@@ -154,7 +154,7 @@ Conventions for the tests:
 - [x] **T38 Quote item merges across three notes** — module: duplicate-merging — FR-11
   **Done when:** "Priya to send the revised quote to Acme" from 09-01, 09-08 (`Priya N.`, em dash) and 09-15 (`[x]`) becomes one item with one ID, three sources, status done.
 
-- [ ] **T39 Latest-wins for status** — module: duplicate-merging — FR-11
+- [x] **T39 Latest-wins for status** — module: duplicate-merging — FR-11
   **Done when:** a later `[x]` sets done; a later `[ ]` after that reopens it; processing notes in date order, not file order, gives the same result.
 
 - [ ] **T40 Latest-wins for due date** — module: duplicate-merging — FR-11

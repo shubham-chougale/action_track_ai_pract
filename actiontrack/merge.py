@@ -75,3 +75,11 @@ def merge_mention(store: Store, m: Mention) -> str:
     )
     store.add_source(item.id, m.source)
     return "new"
+
+
+def merge_mentions(store: Store, mentions) -> dict[str, int]:
+    """Merge mentions in meeting-date order (file name breaks ties); returns counts per outcome."""
+    counts = {"new": 0, "merged": 0, "unchanged": 0}
+    for m in sorted(mentions, key=lambda m: (m.source["date"], m.source["file"])):
+        counts[merge_mention(store, m)] += 1
+    return counts

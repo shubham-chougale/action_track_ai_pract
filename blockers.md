@@ -35,7 +35,7 @@ open sections below as they are discovered; when resolved, they move to
 
 | ID | Task | Title | Priority | Impact | Source | Fix needed | Next step | Raised |
 |---|---|---|---|---|---|---|---|---|
-| _None_ | | | | | | | | |
+| X-001 | T65 Create one draft | `claude -p` has no Gmail connector in headless mode | High | T65 and T76 (real draft, Sent unchanged) cannot be verified; `followup` always fails with a clear error | gmail.py live run: init shows mcp_servers [], no Gmail tools, though `claude mcp list` says Gmail Connected | Make connectors available to `claude -p` (login/config), or choose another bridge (Python MCP client) | Ask user; retry live run from a normal terminal | 2026-10-28 |
 
 ## Completed
 

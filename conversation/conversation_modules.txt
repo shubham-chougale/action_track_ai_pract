@@ -1,0 +1,372 @@
+ ▐▛███▛█   Claude Code v2.1.312
+▝▜██████▀  Sonnet 5.5 · Claude Team
+ ▝▝   ▝▝   ~\Downloads\ai_pract\ai_pract
+
+
+❯ read @requirement.md, and then find all the modules, next create module wise  
+  folders with folder names as their module names into the modules folder.      
+  ⎿  Read requirement.md (176 lines)
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● I read requirement.md and created 13 empty module folders under modules/. The
+  document doesn't list modules itself (it leaves architecture out), so I
+  grouped them by the functional requirements (FRs) in it.
+
+  ┌────────────────────────┬─────────────────────────────────────────────────┐
+  │         Module         │                     Covers                      │
+  ├────────────────────────┼─────────────────────────────────────────────────┤
+  │ note-scanning          │ FR-1 (which files are scanned) and FR-5         │
+  │                        │ (skipping malformed notes)                      │
+  ├────────────────────────┼─────────────────────────────────────────────────┤
+  │ meeting-metadata       │ FR-4 (meeting date, title and attendees, header │
+  │                        │  styles A and B)                                │
+  ├────────────────────────┼─────────────────────────────────────────────────┤
+  │ action-item-extraction │ FR-2, FR-3 and FR-9 (checkbox items, flagging   │
+  │                        │ items in code blocks or comments, task text)    │
+  ├────────────────────────┼─────────────────────────────────────────────────┤
+  │ owner-resolution       │ FR-6, FR-7 and FR-8 (name forms, ambiguous      │
+  │                        │ owners, Unassigned, co-owners)                  │
+  ├────────────────────────┼─────────────────────────────────────────────────┤
+  │ people-roster          │ Names learned from attendees, and the roster    │
+  │                        │ CSV with emails (FR-6, FR-19)                   │
+  ├────────────────────────┼─────────────────────────────────────────────────┤
+  │ due-date-resolution    │ FR-10 (resolving due dates relative to the      │
+  │                        │ meeting date)                                   │
+  ├────────────────────────┼─────────────────────────────────────────────────┤
+  │ duplicate-merging      │ FR-11 (matching and merging repeated items)     │
+  ├────────────────────────┼─────────────────────────────────────────────────┤
+  │ persistence            │ FR-12 (IDs, re-ingest, the .actiontrack/ data   │
+  │                        │ folder)                                         │
+  ├────────────────────────┼─────────────────────────────────────────────────┤
+  │ ingest-report          │ FR-13 (the report printed after ingest)         │
+  ├────────────────────────┼─────────────────────────────────────────────────┤
+  │ item-listing           │ FR-14, FR-15 and FR-16 (list filters, status    │
+  │                        │ rules, output)                                  │
+  ├────────────────────────┼─────────────────────────────────────────────────┤
+  │ mark-done              │ FR-17 (done command)                            │
+  ├────────────────────────┼─────────────────────────────────────────────────┤
+  │ followup-email         │ FR-18 and FR-20 (which items go in, subject and │
+  │                        │  body)                                          │
+  ├────────────────────────┼─────────────────────────────────────────────────┤
+  │ gmail-draft            │ FR-21 and FR-22 (creating the draft through the │
+  │                        │  Gmail connector, failure handling)             │
+  └────────────────────────┴─────────────────────────────────────────────────┘
+
+  I didn't add a separate CLI module. If you want one for the command wiring and
+  the --today option, say so and I'll add it. I also didn't put placeholder
+  files in the folders, so git won't track them until they have content.
+
+✻ Baked for 13s · done 11:50 AM
+
+❯ now in each module create a spec.md is a good fit.                            
+
+● Write(modules\note-scanning\spec.md)
+  ⎿  Wrote 41 lines to modules\note-scanning\spec.md
+      1 # Module: note-scanning
+      2 
+      3 Requirements covered: FR-1, FR-5 (and acceptance check 8.1).
+      4 
+      5 ## Purpose
+      6 Decide which files in the given folder are notes to ingest, and s
+        kip malformed notes with a reason, without ever stopping the run.
+      7 
+      8 ## Inputs
+      9 - `<folder>` path given to `actiontrack ingest`.
+     … +32 lines (ctrl+o to expand)
+
+● Write(modules\meeting-metadata\spec.md)
+  ⎿  Wrote 32 lines to modules\meeting-metadata\spec.md
+      1 # Module: meeting-metadata
+      2 
+      3 Requirements covered: FR-4 (supports FR-5, FR-6, FR-10).
+      4 
+      5 ## Purpose
+      6 Read the meeting title, date and attendees from the note body.
+      7 
+      8 ## Inputs
+      9 - Text of one note.
+     … +23 lines (ctrl+o to expand)
+
+● Write(modules\action-item-extraction\spec.md)
+  ⎿  Wrote 33 lines to modules\action-item-extraction\spec.md
+      1 # Module: action-item-extraction
+      2 
+      3 Requirements covered: FR-2, FR-3, FR-9 (acceptance check 8.7).
+      4 
+      5 ## Purpose
+      6 Find action items in a note's text, mark decoys as flagged, and s
+        plit each line into owner text, task text and due phrase.
+      7 
+      8 ## Inputs
+      9 - Text of one valid note.
+     … +24 lines (ctrl+o to expand)
+
+● Write(modules\owner-resolution\spec.md)
+  ⎿  Wrote 39 lines to modules\owner-resolution\spec.md
+       1 # Module: owner-resolution
+       2 
+       3 Requirements covered: FR-6, FR-7, FR-8 (SC3; acceptance checks 8
+         .3, 8.4, 8.5, 8.6).
+       4 
+       5 ## Purpose
+       6 Turn the raw owner text of an item into one or more known people
+         , `Unassigned`, or a flagged ambiguous/unknown owner. Never gues
+         s.
+       7 
+     … +32 lines (ctrl+o to expand)
+
+● Write(modules\people-roster\spec.md)
+  ⎿  Wrote 29 lines to modules\people-roster\spec.md
+       1 # Module: people-roster
+       2 
+       3 Requirements covered: FR-6 (names learned from attendees), FR-19
+          (roster CSV), section 6 (per-person data).
+       4 
+       5 ## Purpose
+       6 Keep the set of known people and their optional email addresses.
+       7 
+       8 ## Inputs
+       9 - Attendee names from every ingested note.
+     … +20 lines (ctrl+o to expand)
+
+● Write(modules\due-date-resolution\spec.md)
+  ⎿  Wrote 31 lines to modules\due-date-resolution\spec.md
+       1 # Module: due-date-resolution
+       2 
+       3 Requirements covered: FR-10.
+       4 
+       5 ## Purpose
+       6 Convert a due phrase into an exact date, relative to the meeting
+          date, or leave it empty when no exact day can be determined.
+       7 
+       8 ## Inputs
+       9 - Raw due phrase (may be absent).
+     … +22 lines (ctrl+o to expand)
+
+● Write(modules\duplicate-merging\spec.md)
+  ⎿  Wrote 33 lines to modules\duplicate-merging\spec.md
+       1 # Module: duplicate-merging
+       2 
+       3 Requirements covered: FR-11 (SC2; acceptance check 8.2).
+       4 
+       5 ## Purpose
+       6 Recognise the same action item mentioned in several meetings and
+          keep it as one item.
+       7 
+       8 ## Inputs
+       9 - A newly extracted item (resolved owners, task text, due date, 
+     … +25 lines (~1 KB) (ctrl+o to expand)
+
+● Write(modules\persistence\spec.md)
+  ⎿  Wrote 23 lines to modules\persistence\spec.md
+       1 # Module: persistence
+       2 
+       3 Requirements covered: FR-12, section 6 (data kept), NFR (determi
+         nistic, notes never modified); SC5; acceptance check 8.10.
+       4 
+       5 ## Purpose
+       6 Keep items, sources and people between runs so re-ingesting is s
+         afe and IDs stay stable.
+       7 
+       8 ## Data kept
+     … +15 lines (ctrl+o to expand)
+
+● Write(modules\ingest-report\spec.md)
+  ⎿  Wrote 27 lines to modules\ingest-report\spec.md
+      1 # Module: ingest-report
+      2 
+      3 Requirements covered: FR-13 (SC1).
+      4 
+      5 ## Purpose
+      6 Tell the user what `actiontrack ingest` did and what needs attent
+        ion.
+      7 
+      8 ## Inputs
+      9 - Results from `note-scanning`, `owner-resolution`, `due-date-res
+     … +19 lines (ctrl+o to expand)
+
+● Write(modules\item-listing\spec.md)
+  ⎿  Wrote 34 lines to modules\item-listing\spec.md
+       1 # Module: item-listing
+       2 
+       3 Requirements covered: FR-14, FR-15, FR-16 (acceptance check 8.8)
+         .
+       4 
+       5 ## Purpose
+       6 `actiontrack list`: show tracked items with filters.
+       7 
+       8 ## Inputs
+       9 - Stored items.
+     … +25 lines (ctrl+o to expand)
+
+● Write(modules\mark-done\spec.md)
+  ⎿  Wrote 21 lines to modules\mark-done\spec.md
+      1 # Module: mark-done
+      2 
+      3 Requirements covered: FR-17 (and the "manual done sticks" rule of
+         FR-12).
+      4 
+      5 ## Purpose
+      6 `actiontrack done <id>`: mark one item as done by hand.
+      7 
+      8 ## Inputs
+      9 - One item ID.
+     … +12 lines (ctrl+o to expand)
+
+● Write(modules\followup-email\spec.md)
+  ⎿  Wrote 31 lines to modules\followup-email\spec.md
+       1 # Module: followup-email
+       2 
+       3 Requirements covered: FR-18, FR-19 (recipient use), FR-20 (accep
+         tance check 8.9).
+       4 
+       5 ## Purpose
+       6 Decide which items go to one owner and compose the follow-up ema
+         il (subject and plain-text body) for `actiontrack followup <owne
+         r>`.
+       7 
+     … +24 lines (ctrl+o to expand)
+
+● Write(modules\gmail-draft\spec.md)
+  ⎿  Wrote 25 lines to modules\gmail-draft\spec.md
+      1 # Module: gmail-draft
+      2 
+      3 Requirements covered: FR-21, FR-22 (SC4; acceptance check 8.9).
+      4 
+      5 ## Purpose
+      6 Create the follow-up email as a Gmail draft through the Gmail MCP
+         connector. Never send.
+      7 
+      8 ## Inputs
+      9 - Recipient (optional), subject, plain-text body from `followup-e
+     … +17 lines (ctrl+o to expand)
+
+● I created a spec.md in each of the 13 module folders under modules/. Every
+  spec comes only from requirement.md, and none of them names a tech stack or
+  architecture.
+
+  Each spec covers:
+  - Purpose: what the module is for.
+  - Requirements covered: the FR numbers, plus the success criteria (SC) and
+    acceptance checks where they apply.
+  - Inputs and outputs: what goes in and what comes out.
+  - Rules: the behaviour, taken from the requirements.
+  - Edge cases and examples: the sample-folder cases where they matter.
+  - Depends on: which other modules it uses.
+
+  I split the shared rules between modules rather than repeating them. For
+  example, item-listing owns the status definitions (done, overdue, open) and
+  followup-email refers to them. persistence owns the rule that a manual done
+  sticks, and duplicate-merging and mark-done point to it.
+
+  I didn't commit anything.
+
+✻ Brewed for 1m 0s · done 11:54 AM
+
+❯ Read requirement.md, spec.md and the module specs. Write tasks.md: an ordered 
+  checklist of small tasks, each with the module, the FR numbers it covers,     
+  and a done-when test. Don't write code yet.                                   
+
+  Searched for 2 patterns (ctrl+o to expand)
+
+● Write(tasks.md)
+  ⎿  Wrote 309 lines to tasks.md
+      1 # actiontrack — Task list
+      2 
+      3 Sources: `requirement.md` and the 13 module specs in `modules/*/s
+        pec.md` (there is no root-level `spec.md`).
+      4 Tasks are ordered so each one only depends on earlier ones. Each 
+        task: module, FRs, and a done-when test. No code or tech-stack ch
+        oices here.
+      5 
+      6 Conventions for the tests:
+      7 - "Sample folder" = the provided `notes/` folder (36 files).
+     … +302 lines (ctrl+o to expand)
+● Update(tasks.md)
+  ⎿  Added 1 line, removed 1 line
+      172    **Done when:** `ingest` on a small fixture folder stores the
+            expected items with owners, dates, flags and sources.
+      173  
+      174  - [ ] **T43 Counts** — module: ingest-report — FR-13
+      175 -  **Done when:** the report prints files scanned/ingested/skip
+          -ped and items new/merged/unchanged; on the sample folder: 35 s
+          -canned `.md`... 31 ingested, 4 skipped (scanned count matches 
+          -what the module spec defines and is used consistently).       
+      175 +  **Done when:** the report prints files scanned/ingested/skip
+          +ped and items new/merged/unchanged; on the sample folder: 35 s
+          +canned (the `.md` files; the `.txt` is not counted), 31 ingest
+          +ed, 4 skipped.                                                
+      176  
+      177  - [ ] **T44 Skip reasons and flags in report** — module: inges
+           t-report — FR-13
+      178    **Done when:** the report lists each of the 4 skipped files 
+           with its reason, and lists flagged items grouped as ambiguous/
+           unknown owner, unresolved due phrase, and code-block/comment i
+           tems.
+
+● I wrote tasks.md in the project root: 79 ordered tasks (T01–T79), each with
+  its module, the FR numbers it covers and a done-when test. I didn't write any
+  code and I haven't run any of the tests. Nothing is committed.
+
+  There is no root-level spec.md, so I worked from requirement.md and the 13
+  module specs.
+
+  The tasks run in dependency order:
+  1. Fixtures (T01): small test notes.
+  2. Persistence (T02–T06): the data folder and item store.
+  3. Reading notes (T07–T14): meeting metadata and folder scanning.
+  4. Extraction (T15–T20): action-item extraction.
+  5. Due dates (T21–T26): due-date resolution.
+  6. People and owners (T27–T35): the roster and owner resolution.
+  7. Merging (T36–T41): duplicate merging.
+  8. Ingest (T42–T48): ingest and its report.
+  9. Commands (T49–T58): done and list.
+  10. Follow-up and Gmail (T59–T67): followup and the Gmail draft.
+  11. Acceptance (T68–T79): the 10 acceptance checks from the sample folder, a
+      never-crash sweep and a Windows run.
+
+  A coverage table at the end maps every FR (FR-1 to FR-22) to its tasks, so you
+  can see that none is missed.
+
+  - Scanned count: T43 expects 35 scanned, 31 ingested and 4 skipped. That
+    counts only the .md files, since the .txt isn't scanned. The requirements
+    don't state the scanned count, so I chose that reading.
+  - Live Gmail: T65–T67 and T76 need the live Gmail connector, so they can't run
+    as pure unit tests.
+
+✻ Cooked for 1m 1s · done 11:55 AM
+
+❯ git add requirement.md spec.md modules/                                       
+  git commit -m "Add requirements and specs"                                    
+  git push                                                                      
+     Add .claude/ to .gitignore first, so the stray worktree doesn't get        
+  included. Don't use git add -A.                                               
+
+  Pushed to main, ran 1 shell command (ctrl+o to expand)
+
+● I pushed commit 09ee505 ("Add requirements and specs") to origin/main.
+
+  - What's in it: requirement.md and the 13 module specs under modules/. I
+    staged only those paths and didn't use git add -A.
+  - .gitignore: I added .claude/ to it, but I didn't stage the file, because it
+    wasn't in your git add list. It's still untracked, so the rule only applies
+    on this machine until you commit it.
+  - spec.md: Your command named a root-level spec.md, which doesn't exist. The
+    specs are the per-module spec.md files, which are included.
+  - tasks.md: It's also uncommitted.
+  - Line endings: Git printed warnings that LF will be replaced by CRLF in the
+    committed files. They're harmless.
+
+  I can commit and push .gitignore and tasks.md if you want.
+
+✻ Brewed for 18s · done 11:57 AM
+
+❯ commit and push .gitignore and tasks.md.                                      
+
+  Pushed to main (ctrl+o to expand)
+
+● I committed .gitignore and tasks.md and pushed them to origin/main as 6fcb20e
+  ("Add task list and ignore .claude/"). The working tree is clean.
+
+✻ Churned for 7s · done 11:57 AM

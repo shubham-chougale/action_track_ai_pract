@@ -1,0 +1,144 @@
+ ▐▛███▛█   Claude Code v2.1.312
+▝▜██████▀  Sonnet 5.5 · Claude Team
+ ▝▝   ▝▝   ~\Downloads\ai_pract\ai_pract
+
+
+❯ Do task T1 from tasks.md: scaffold the project (pyproject.toml, actiontrack   
+  entry point, tests/ folder). Verify pytest runs, mark T1 done in both         
+  tasks.md files, and commit. Stop after T1.                                    
+
+  Searched for 2 patterns (ctrl+o to expand)
+
+● User answered Claude's questions:
+  ⎿  · tasks.md's T01 is "Small fixture notes" (hand-written test fixtures), not
+     project scaffolding, and no task mentions pyproject.toml or an entry 
+     point. CLAUDE.md also says to ask before choosing a tech stack. What should
+     I do? → Scaffold Python, then T01
+
+  Read 1 file, ran 1 shell command (ctrl+o to expand)
+
+● Write(pyproject.toml)
+  ⎿  Wrote 22 lines to pyproject.toml
+       1 [build-system]
+       2 requires = ["setuptools>=68"]
+       3 build-backend = "setuptools.build_meta"
+       4 
+       5 [project]
+       6 name = "actiontrack"
+       7 version = "0.1.0"
+       8 description = "Track action items from meeting notes and draft f
+         ollow-up emails."
+       9 requires-python = ">=3.11"
+     … +13 lines (ctrl+o to expand)
+
+● Write(actiontrack\__init__.py)
+  ⎿  Wrote 1 line to actiontrack\__init__.py
+      1 """actiontrack: track action items from meeting notes."""
+
+● Write(actiontrack\cli.py)
+  ⎿  Wrote 20 lines to actiontrack\cli.py
+       1 """Command-line entry point."""
+       2 
+       3 import argparse
+       4 import sys
+       5 
+       6 
+       7 def build_parser() -> argparse.ArgumentParser:
+       8     return argparse.ArgumentParser(
+       9         prog="actiontrack",
+      10         description="Track action items from meeting notes and d
+     … +11 lines (ctrl+o to expand)
+
+● Write(tests\test_smoke.py)
+  ⎿  Wrote 5 lines to tests\test_smoke.py
+      1 from actiontrack.cli import main
+      2 
+      3 
+      4 def test_main_runs():
+      5     assert main([]) == 0
+
+  Ran 2 shell commands (ctrl+o to expand)
+
+● I scaffolded the Python project and committed it as a5faff0. I did not tick
+  T01 in either tasks.md, because T01 is "Small fixture notes", not scaffolding.
+
+
+● Tests pass and the sample notes/ is untouched. Now ticking T01 in tasks.md
+  (it's cross-cutting, so only the top-level file).
+
+● Update(tasks.md)
+  ⎿  Added 1 line, removed 1 line
+      12  
+      13  ## Phase 0 — Test fixtures
+      14  
+      15 -- [ ] **T01 Small fixture notes** — module: all (test support) 
+         -— FR: n/a                                                      
+      15 +- [x] **T01 Small fixture notes** — module: all (test support) 
+         +— FR: n/a                                                      
+      16    Build a few tiny hand-written notes under a test folder: one 
+          per header style, one with each checkbox marker, a nested pair,
+           a code-block decoy, a comment decoy, an empty file, a binary f
+          ile, a no-date file, a bad-date file, a `.txt` file.
+      17    **Done when:** each fixture is listed in the test folder with
+           a one-line comment of what it exercises, and the sample folder
+           is untouched.
+      18  
+
+● I've built the T01 fixtures and ticked T01 in the top-level tasks.md. I
+  haven't committed, since you didn't ask. All 3 tests pass.
+
+  - Fixtures: There are 11 notes in tests/fixtures/notes/:
+    - Both header styles.
+    - Every checkbox marker: - [ ], - [x], - [X], * [ ], + [ ].
+    - A nested pair.
+    - A code-block decoy and a comment decoy.
+    - An empty file and a binary .md.
+    - A no-date note and a bad-date note.
+    - A .txt file.
+  - Listing: tests/fixtures/README.md lists each fixture with a one-line
+    comment. I put the comments there because the empty and binary files can't
+    hold any.
+  - Tests: tests/test_fixtures.py checks that every fixture on disk is listed
+    with a comment, and that git shows no changes under the root notes/.
+  - Ticking: T01 exists only in the top-level tasks.md, so there was no module
+    file to tick.
+  - Slip: An earlier command ran from the wrong folder and put the test file in
+    tests/fixtures/. I moved it to tests/ before the final run.
+
+✻ Worked for 9s · done 12:24 PM
+
+❯ commit this                                                                   
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● I committed the T01 work as 8144732 ("Add T01 small fixture notes and tests").
+  The working tree is clean.
+
+  Git printed line-ending warnings about LF being converted to CRLF. They are
+  harmless, and nothing failed.
+
+✻ Sautéed for 3s · done 12:24 PM
+
+❯ verify the task T01                                                           
+
+  Searched for 1 pattern, ran 1 shell command (ctrl+o to expand)
+
+● T01 meets its done-when condition.
+
+  - Fixtures listed: All 11 fixtures are on disk, and tests/fixtures/README.md
+    lists each with a one-line comment. A test checks that the listed names
+    match the files on disk exactly.
+  - Required cases: Every case the task names is covered: one note per header
+    style, each checkbox marker, a nested pair, the code-block and comment
+    decoys, and the empty, binary, no-date, bad-date and .txt files.
+  - Sample folder untouched: git status shows no changes under notes/, and it
+    has no diff since before this work began.
+  - Tests: pytest passes (3 passed), including the smoke test from the scaffold.
+  - Tick: T01 is [x] in tasks.md (line 15). It exists only in the top-level
+    file, so there is no module file to tick.
+
+  The .txt fixture is skipped for its extension and the .md fixtures for their
+  content, but nothing exercises that yet because there is no scanner. The tests
+  so far check only the fixture set itself.
+
+✻ Churned for 8s · done 12:24 PM

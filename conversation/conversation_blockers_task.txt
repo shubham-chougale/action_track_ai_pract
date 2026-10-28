@@ -1,0 +1,574 @@
+ ▐▛███▛█   Claude Code v2.1.312
+▝▜██████▀  Sonnet 5.5 · Claude Team
+ ▝▝   ▝▝   ~\Downloads\ai_pract\ai_pract
+
+
+❯ create one blockers.md - (Into that if we are facing any bugs, decisions, or  
+  else blocker make sure that blocker should get automatically added into the   
+  blockers.md) and if that blocker, bug, decision gets resolved then it should  
+  be get added into the completed section this is the last section we need keep 
+  so have the list of what issues resolved and what issues are not resolved     
+
+  Listed 1 directory (ctrl+o to expand)
+
+● No CLAUDE.md exists, so I'll create blockers.md and a CLAUDE.md rule that
+  makes the logging automatic.
+
+● Write(blockers.md)
+  ⎿  Wrote 25 lines to blockers.md
+      1 # Blockers
+      2 
+      3 Living log of bugs, open decisions, and other blockers. New items
+         go into the
+      4 sections below as they are discovered; when resolved, they move t
+        o **Completed**
+      5 (always the last section).
+      6 
+      7 Entry format: `- [ID] Title — details (date raised)`
+      8 
+     … +17 lines (ctrl+o to expand)
+
+● Write(CLAUDE.md)
+  ⎿  Wrote 19 lines to CLAUDE.md
+       1 # Project instructions
+       2 
+       3 ## Blocker tracking (`blockers.md`)
+       4 
+       5 Keep `blockers.md` up to date automatically, without being asked
+         :
+       6 
+       7 - When a bug, an unresolved decision, or any other blocker comes
+          up (failing
+       8   test, error we can't get past, missing info, open design/tech 
+     … +12 lines (ctrl+o to expand)
+
+● I created two files in the project root. I haven't committed either.
+
+  blockers.md has four sections:
+  - Bugs (Open)
+  - Decisions (Pending)
+  - Other Blockers (Open)
+  - Completed, which is the last section. It holds everything that has been
+    resolved, so you can see what is solved and what is still open.
+
+  CLAUDE.md is the part that makes the logging automatic. Claude Code reads this
+  file at the start of every session. It tells me to:
+  - Add any new bug, open decision or blocker to the matching open section as
+    soon as it comes up, with an ID (B-001, D-001, X-001), a short title,
+    details and the date.
+  - Move an entry to Completed when it's resolved, with how it was resolved and
+    the dates raised and resolved.
+  - Avoid duplicates and keep Completed as the last section.
+
+  This works through my instructions, not a script, so it only applies when I'm
+  working in this project. If you want a hard guarantee, such as a hook that
+  fires on every failed command, I can set that up too.
+
+✻ Cogitated for 14s · done 12:01 PM
+
+❯ Generate a informative chart in @blockers.md detailed information chart which 
+  consist the information about the blocker or bug or decision -                
+  Always use the Useraskquestion tool to ask the question.                      
+  ⎿  Read blockers.md (26 lines)
+
+● User answered Claude's questions:
+  ⎿  · What kind of chart should I add to blockers.md? → Detailed table 
+     (Recommended)
+     · Which columns should the detailed chart include? → Priority/Severity, 
+     Impact / affected area, Resolution / next step, "date, What fix it needed, 
+     from where that bug accoured, task_name "
+
+● Write(blockers.md)
+  ⎿  Added 28 lines, removed 9 lines
+       1  # Blockers
+       2  
+       3  Living log of bugs, open decisions, and other blockers. New ite
+          ms go into the
+       4 -sections below as they are discovered; when resolved, they move
+         - to **Completed**                                              
+       5 -(always the last section).                                     
+       4 +open sections below as they are discovered; when resolved, they
+         + move to                                                       
+       5 +**Completed** (always the last section).                       
+       6  
+       7 -Entry format: `- [ID] Title — details (date raised)`           
+       7 +## Column guide                                                
+       8  
+       9 +| Column | Meaning |                                           
+      10 +|---|---|                                                      
+      11 +| ID | `B-###` bug, `D-###` decision, `X-###` other blocker |  
+      12 +| Task | Task name from `tasks.md` the item relates to |       
+      13 +| Title | Short description |                                  
+      14 +| Priority | Critical / High / Medium / Low |                  
+      15 +| Impact | What part of the project it blocks or affects |     
+      16 +| Source | Where it occurred (file, module, step, meeting) |   
+      17 +| Fix needed | What it takes to fix or decide |                
+      18 +| Next step / Resolution | Planned next action (open) or how it
+         + was resolved (completed) |                                    
+      19 +| Raised | Date raised (YYYY-MM-DD) |                          
+      20 +| Resolved | Date resolved (Completed section only) |          
+      21 +                                                               
+      22  ## Bugs (Open)
+      23  
+      11 -_None_                                                         
+      24 +| ID | Task | Title | Priority | Impact | Source | Fix needed |
+         + Next step | Raised |                                          
+      25 +|---|---|---|---|---|---|---|---|---|                          
+      26 +| _None_ | | | | | | | | |                                     
+      27  
+      28  ## Decisions (Pending)
+      29  
+      15 -_None_                                                         
+      30 +| ID | Task | Title | Priority | Impact | Source | Fix needed |
+         + Next step | Raised |                                          
+      31 +|---|---|---|---|---|---|---|---|---|                          
+      32 +| _None_ | | | | | | | | |                                     
+      33  
+      34  ## Other Blockers (Open)
+      35  
+      19 -_None_                                                         
+      36 +| ID | Task | Title | Priority | Impact | Source | Fix needed |
+         + Next step | Raised |                                          
+      37 +|---|---|---|---|---|---|---|---|---|                          
+      38 +| _None_ | | | | | | | | |                                     
+      39  
+      40  ## Completed
+      41  
+      23 -Resolved bugs, decisions, and blockers. Format: `- [ID] Title —
+         - resolution (raised → resolved)`                               
+      24 -                                                               
+      25 -_None yet_                                                     
+      42 +| ID | Type | Task | Title | Priority | Impact | Source | Fix n
+         +eeded | Resolution | Raised | Resolved |                       
+      43 +|---|---|---|---|---|---|---|---|---|---|---|                  
+      44 +| _None yet_ | | | | | | | | | | |                             
+
+● Update(CLAUDE.md)
+  ⎿  Added 9 lines, removed 7 lines
+       8    test, error we can't get past, missing info, open design/tech
+           choice, external
+       9    dependency), add it right away to the matching open section: 
+          **Bugs (Open)**,
+      10    **Decisions (Pending)**, or **Other Blockers (Open)**.
+      11 -- Give each entry a unique ID (`B-001` bug, `D-001` decision, `
+         -X-001` other),                                                 
+      12 -  a short title, details, and the date raised.                 
+      13 -- When one is resolved (fix landed, decision made, blocker clea
+         -red), remove it                                                
+      14 -  from its open section and add it to **Completed** with the re
+         -solution and                                                   
+      15 -  resolved date.                                               
+      11 +- Each entry is one table row with a unique ID (`B-001` bug, `D
+         +-001` decision,                                                
+      12 +  `X-001` other) and every column filled in (see the column gui
+         +de in                                                          
+      13 +  `blockers.md`): task name, title, priority, impact, source (w
+         +here it                                                        
+      14 +  occurred), fix needed, next step, and date raised.           
+      15 +- When one is resolved (fix landed, decision made, blocker clea
+         +red), remove its                                               
+      16 +  row from the open table and add a row to **Completed** with i
+         +ts type, the                                                   
+      17 +  resolution, and the resolved date.                           
+      18  - **Completed** must remain the last section of the file.
+      17 -- Replace the `_None_` placeholder when a section gets its firs
+         -t entry, and                                                   
+      18 -  restore it if a section becomes empty.                       
+      19 +- Replace the `_None_` placeholder row when a table gets its fi
+         +rst entry, and                                                 
+      20 +  restore it if a table becomes empty.                         
+      21  - Don't add duplicates; check existing entries first.
+
+● I rebuilt blockers.md so every section is now a detailed table, and I updated
+  the rule in CLAUDE.md to match. Nothing is committed.
+
+  - Open tables: Bugs (Open), Decisions (Pending) and Other Blockers (Open) each
+    have these columns: ID, Task, Title, Priority, Impact, Source, Fix needed,
+    Next step and Raised.
+  - Completed: this is still the last section. Its table adds Type and
+    Resolution (how it was fixed), plus a Resolved date.
+  - Column guide: a table at the top explains each column. Source is where the
+    item occurred (file, module or meeting), and Task is the task name from
+    tasks.md.
+  - Automatic logging: CLAUDE.md now tells me to log each new item as a full
+    table row, with every column filled in. When something is resolved, I move
+    its row to Completed.
+
+  The tables currently hold only _None_ placeholder rows, since nothing has been
+  logged yet.
+
+✻ Worked for 17s · done 12:06 PM
+
+❯ Update the @CLAUDE.md - based on scenario.md add the clear instructions. make 
+  sure claude md should not get exceeded above the 200 lines                    
+  ⎿  Read CLAUDE.md (22 lines)
+
+  Read 2 files, listed 1 directory (ctrl+o to expand)
+
+● Write(CLAUDE.md)
+  ⎿  Added 79 lines
+       1  # Project instructions
+       2  
+       3 +## Project: actiontrack                                        
+       4 +                                                               
+       5 +Team meeting notes pile up as markdown files; action items get 
+         +lost and                                                       
+       6 +follow-up emails are late or never written. `actiontrack` is a 
+         +small CLI that                                                 
+       7 +reads meeting notes, tracks action items, and drafts follow-up 
+         +emails for                                                     
+       8 +review. Single user, runs locally on Windows, command line only
+         +.                                                              
+       9 +                                                               
+      10 +Source of truth, in order: `requirement.md` (what), `modules/*/
+         +spec.md` (13                                                   
+      11 +module specs, no root-level spec), `tasks.md` (ordered build ta
+         +sks with                                                       
+      12 +done-when tests), `Scenario.md` (original brief). Sample input 
+         +is `notes/`                                                    
+      13 +(36 files, several long/messy, some deliberately malformed). If
+         + sources                                                       
+      14 +conflict, follow `requirement.md` and log the conflict in `bloc
+         +kers.md`.                                                      
+      15 +Tech stack is not fixed by the docs; ask before choosing one.  
+      16 +                                                               
+      17 +## Commands                                                    
+      18 +                                                               
+      19 +1. `actiontrack ingest <folder>`: parse every `.md` meeting not
+         +e in the folder.                                               
+      20 +   Each note has a date, attendees, and free-form text; action 
+         +items appear as                                                
+      21 +   lines like `- [ ] Priya to send the revised quote by Friday`
+         +. Store each item                                              
+      22 +   with owner, task, due date (relative dates like "Friday" res
+         +olved to a real                                                
+      23 +   date), source file, and status. Report skipped notes with a 
+         +reason.                                                        
+      24 +2. `actiontrack list`: show items. Filters: `--owner`, `--statu
+         +s                                                              
+      25 +   open|done|overdue`, `--due-before <date>`. Overdue = open an
+         +d past due.                                                    
+      26 +3. `actiontrack done <id>`: mark an item done.                 
+      27 +4. `actiontrack followup <owner>`: one email per owner covering
+         + their open and                                                
+      28 +   overdue items; create a Gmail draft via the Gmail MCP connec
+         +tor. Never send.                                               
+      29 +                                                               
+      30 +## Hard rules                                                  
+      31 +                                                               
+      32 +- **Never send email.** Only create drafts (`create_draft`). Ne
+         +ver call                                                       
+      33 +  `send_message`, `reply`, or `forward`. The user reviews and s
+         +ends manually.                                                 
+      34 +- **Never crash on bad input.** Malformed notes (bad/missing da
+         +te, empty file,                                                
+      35 +  binary file, wrong extension, broken structure) are skipped a
+         +nd reported with                                               
+      36 +  the file name and reason. The run continues.                 
+      37 +- **Never guess an owner.** If a name is ambiguous or unresolva
+         +ble, flag the                                                  
+      38 +  item instead of assigning it.                                
+      39 +- **Ingest is idempotent.** Re-running `ingest` on the same fol
+         +der must not                                                   
+      40 +  create duplicates or reset statuses (e.g. a `done` item stays
+         + `done`).                                                      
+      41 +- **Dates are deterministic.** Support a `--today <date>` optio
+         +n wherever dates                                               
+      42 +  matter (relative-date resolution, overdue) so tests give stab
+         +le results.                                                    
+      43 +- Don't modify `notes/`; it is read-only input.                
+      44 +                                                               
+      45 +## Edge cases the tool must handle                             
+      46 +                                                               
+      47 +- **Duplicates:** the same item repeated across several meeting
+         +s appears once                                                 
+      48 +  in `list` (merge, keep every source reference).              
+      49 +- **No owner or no due date:** keep the item; show it as unassi
+         +gned / no due                                                  
+      50 +  date. Do not drop it and do not invent values.               
+      51 +- **Same first name:** two Priyas (Nair, Shah) and two Rahuls (
+         +Mehta, Verma)                                                  
+      52 +  must never be mixed up. Resolve using attendees/context, othe
+         +rwise flag.                                                    
+      53 +- **Malformed notes:** skip, report, continue (see hard rules).
+      54 +- **Markers and decoys:** handle the different checkbox markers
+         + and header                                                    
+      55 +  styles; ignore checkbox-looking lines inside code blocks and 
+         +comments.                                                      
+      56 +- **Non-`.md` files** (e.g. `.txt`) are not notes; skip and rep
+         +ort.                                                           
+      57 +                                                               
+      58 +## Module map                                                  
+      59 +                                                               
+      60 +Each module has `modules/<name>/spec.md`; read the spec before 
+         +touching it.                                                   
+      61 +Modules: `note-scanning`, `meeting-metadata`, `action-item-extr
+         +action`,                                                       
+      62 +`owner-resolution`, `people-roster`, `due-date-resolution`,    
+      63 +`duplicate-merging`, `persistence`, `ingest-report`, `item-list
+         +ing`,                                                          
+      64 +`mark-done`, `followup-email`, `gmail-draft`.                  
+      65 +                                                               
+      66 +## Working style                                               
+      67 +                                                               
+      68 +- Work task by task in `tasks.md` order; each task depends only
+         + on earlier                                                    
+      69 +  ones. A task is done only when its done-when test passes and 
+         +no earlier test                                                
+      70 +  regresses. Tick the task's checkbox in `tasks.md` when done. 
+      71 +- Match existing style and keep changes minimal and scoped to t
+         +he task.                                                       
+      72 +- Tests use small fixtures (T01) plus the full sample `notes/` 
+         +folder.                                                        
+      73 +- Before running destructive or outward-facing actions, confirm
+         + first.                                                        
+      74 +- Whenever you need to ask the user a question, use the AskUser
+         +Question tool.                                                 
+      75 +- Don't commit unless asked.                                   
+      76 +                                                               
+      77  ## Blocker tracking (`blockers.md`)
+      78  
+      79  Keep `blockers.md` up to date automatically, without being aske
+          d:
+     ...
+       93  - Replace the `_None_` placeholder row when a table gets its f
+           irst entry, and
+       94    restore it if a table becomes empty.
+       95  - Don't add duplicates; check existing entries first.
+       96 +                                                              
+       97 +## Keeping this file short                                    
+       98 +                                                              
+       99 +Keep `CLAUDE.md` under 200 lines. Put detail in `requirement.m
+          +d` or module                                                  
+      100 +specs and link to it here instead of copying it.              
+
+  Read 1 file (ctrl+o to expand)
+
+● I updated CLAUDE.md from Scenario.md. It's now 100 lines, well under the
+  200-line limit.
+
+  Scenario.md is partly garbled, with some lines cut off mid-sentence. For the
+  gaps I used requirement.md, tasks.md and the modules/ folder, and I didn't
+  invent anything beyond them.
+
+  What it now covers:
+  - Project: a short description of actiontrack, plus the order of the source
+    documents (requirement.md, then modules/*/spec.md, then tasks.md, then
+    Scenario.md). If they conflict, I follow requirement.md and log the conflict
+    in blockers.md.
+  - Commands: ingest, list (with its filters), done and followup.
+  - Hard rules:
+    - Never send email. Only create Gmail drafts.
+    - Skip malformed notes and report them, never crash.
+    - Never guess an owner.
+    - Re-running ingest must not create duplicates or reset statuses.
+    - Support --today so date results are stable.
+    - Treat notes/ as read-only.
+  - Edge cases:
+    - The same item repeated across meetings.
+    - Items with no owner or no due date.
+    - The two Priyas and two Rahuls.
+    - Malformed notes.
+    - Checkbox-looking lines inside code blocks and comments.
+    - Non-.md files.
+  - Module map: the 13 modules, each with a pointer to its spec.
+  - Working style:
+    - Work through tasks.md in order.
+    - Ask you questions with the AskUserQuestion tool, as you requested.
+    - Don't commit unless asked.
+  - Blocker tracking: the earlier rules are unchanged.
+  - Size reminder: a closing note to keep the file under 200 lines.
+
+  I also wrote that the tech stack isn't fixed by the docs and that I should ask
+  before choosing one. Change that if you've already decided.
+
+✻ Baked for 22s · done 12:10 PM
+
+❯ commit these files                                                            
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● I committed blockers.md and CLAUDE.md as 5d72c7b, on main. The working tree is
+  clean and nothing was pushed.
+
+  Git printed a line-ending warning for both files. It's harmless: Git will
+  convert LF to CRLF on Windows.
+
+✻ Churned for 3s · done 12:10 PM
+
+❯ push it                                                                       
+
+  Pushed to main (ctrl+o to expand)
+
+● I pushed main to origin (shubham-chougale/action_track_ai_pract). It now
+  includes commit 5d72c7b with blockers.md and CLAUDE.md.
+
+✻ Sautéed for 5s · done 12:10 PM
+
+❯ Split the tasks in tasks.md by module. For each folder in modules/, create or 
+  append a                                                                      
+  tasks.md that lists only the tasks assigned to that module, with:             
+  - the task ID and title from the top-level tasks.md                           
+  - the FR numbers it covers                                                    
+  - its done-when test                                                          
+                                                                                
+  Then check that every task in the top-level tasks.md appears in exactly one   
+  module's                                                                      
+  tasks.md (or is marked cross-cutting), and that no module lists a task it     
+  doesn't own.                                                                  
+  Report any task that is missing or duplicated. Don't write code yet.          
+
+  Read 1 file, listed 1 directory, ran 4 shell commands (ctrl+o to expand)
+
+● I split the tasks by module and checked coverage. Every one of the 79 tasks is
+  accounted for, and none is duplicated or missing. I haven't written any code
+  or committed anything.
+
+  I created a tasks.md in each of the 13 modules/ folders. None existed before,
+  so nothing was appended. Each lists only that module's tasks, with the task ID
+  and title, the FR numbers and the done-when test. I didn't copy the longer
+  descriptions.
+
+  ┌────────────────────────┬──────────────────────┐
+  │         Module         │        Tasks         │
+  ├────────────────────────┼──────────────────────┤
+  │ persistence            │ T02–T06, T46–T48 (8) │
+  ├────────────────────────┼──────────────────────┤
+  │ meeting-metadata       │ T07–T10 (4)          │
+  ├────────────────────────┼──────────────────────┤
+  │ note-scanning          │ T11–T14 (4)          │
+  ├────────────────────────┼──────────────────────┤
+  │ action-item-extraction │ T15–T20 (6)          │
+  ├────────────────────────┼──────────────────────┤
+  │ due-date-resolution    │ T21–T26 (6)          │
+  ├────────────────────────┼──────────────────────┤
+  │ people-roster          │ T27–T29 (3)          │
+  ├────────────────────────┼──────────────────────┤
+  │ owner-resolution       │ T30–T35 (6)          │
+  ├────────────────────────┼──────────────────────┤
+  │ duplicate-merging      │ T36–T41 (6)          │
+  ├────────────────────────┼──────────────────────┤
+  │ ingest-report          │ T42–T45 (4)          │
+  ├────────────────────────┼──────────────────────┤
+  │ mark-done              │ T49–T50 (2)          │
+  ├────────────────────────┼──────────────────────┤
+  │ item-listing           │ T51–T58 (8)          │
+  ├────────────────────────┼──────────────────────┤
+  │ followup-email         │ T59–T64 (6)          │
+  ├────────────────────────┼──────────────────────┤
+  │ gmail-draft            │ T65–T67 (3)          │
+  └────────────────────────┴──────────────────────┘
+
+  That makes 66 tasks owned by a module. The other 13 are cross-cutting: T01
+  (test fixtures, marked "all") and T68–T79 (the acceptance checks, which name
+  no module). I added a "Task ownership" section at the bottom of the top-level
+  tasks.md that marks them as cross-cutting.
+
+  The check came back clean:
+  - No task ID appears in two module files.
+  - Every task in a module file has that module in its module: field in the
+    top-level list.
+  - Every task has a done-when test.
+
+  One call for you: T42 (ingest pipeline end to end) names two modules,
+  ingest-report and persistence (wiring). I made ingest-report the single owner
+  and noted persistence as a dependency. If you'd rather list it under both, or
+  treat it as cross-cutting, tell me.
+
+  Two smaller notes:
+  - T68–T79 have no FR numbers of their own, so I carried over the SC/NFR
+    references from their done-when text.
+  - The module files are copies. If you change the top-level tasks.md, the
+    module copies need regenerating. I can add a script for that.
+✻ Baked for 40s · done 12:14 PM
+
+❯ Commit the task.md change s                                                   
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● I committed the task changes as 85b2d03 on main. It covers the top-level
+  tasks.md with its new ownership section, plus the 13 new modules/*/tasks.md
+  files. The working tree is clean. I haven't pushed it. Git printed the same
+  harmless LF-to-CRLF warnings as before.
+
+✻ Cogitated for 2s · done 12:15 PM
+
+❯ push it                                                                       
+
+  Pushed to main (ctrl+o to expand)
+
+● I pushed main to origin. The remote now has commit 85b2d03, which adds the
+  module task split.
+
+✻ Sautéed for 4s · done 12:16 PM
+
+❯ Whenever you complete a task, mark it as done in tasks.md right away. Use a   
+  checkbox                                                                      
+  ([ ] → [x]) and tick it in both places: the module's tasks.md and the         
+  top-level                                                                     
+  tasks.md. Only mark a task done after its done-when test passes. If a task is 
+  partially done or blocked, leave it unchecked and add a short note explaining 
+  why.                                                                          
+
+● Update(CLAUDE.md)
+  ⎿  Added 11 lines
+      74  - Whenever you need to ask the user a question, use the AskUser
+          Question tool.
+      75  - Don't commit unless asked.
+      76  
+      77 +## Task completion (`tasks.md`)                                
+      78 +                                                               
+      79 +- When a task is completed, mark it done right away: change `[ 
+         +]` to `[x]` in                                                 
+      80 +  **both** the module's `modules/<name>/tasks.md` and the top-l
+         +evel `tasks.md`.                                               
+      81 +  Cross-cutting tasks (T01, T68-T79) and T42 exist only in the 
+         +top-level file                                                 
+      82 +  or the owning module; tick every place the task appears.     
+      83 +- Only tick a task after its done-when test passes (and no earl
+         +ier test                                                       
+      84 +  regresses).                                                  
+      85 +- If a task is partially done or blocked, leave it unchecked an
+         +d add a short                                                  
+      86 +  note under it explaining why (also log blockers in `blockers.
+         +md`).                                                          
+      87 +                                                               
+      88  ## Blocker tracking (`blockers.md`)
+      89  
+      90  Keep `blockers.md` up to date automatically, without being aske
+          d:
+
+  Read 1 file (ctrl+o to expand)
+
+● I added a "Task completion" section to CLAUDE.md, so the rule applies in every
+  session. The file is now 111 lines, still under the 200 limit. The change
+  isn't committed.
+
+  - When to tick: I mark a task [x] right away, but only once its done-when test
+    passes and no earlier test regresses.
+  - Where: I tick it in both the module's tasks.md and the top-level tasks.md.
+    T01 and T68–T79 exist only in the top-level file, so those get ticked once.
+  - Partial or blocked: I leave the task unchecked and add a short note under it
+    saying why. I also log it in blockers.md.
+
+  I haven't ticked anything, because no task has been done yet.
+
+✻ Crunched for 6s · done 12:16 PM
+
+❯ commit this                                                                   
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● I committed the CLAUDE.md change as 6e4ae3b on main. The working tree is
+  clean, and I haven't pushed it.
+
+✻ Brewed for 2s · done 12:16 PM
+
+❯ push it                                                                       
+
+  Pushed to main (ctrl+o to expand)
+
+● I pushed main to origin. The remote now has commit 6e4ae3b with the
+  task-completion rules in CLAUDE.md.
+
+✻ Cogitated for 4s · done 12:16 PM

@@ -307,3 +307,12 @@ Conventions for the tests:
 | FR-20 | T62, T63 |
 | FR-21 | T65, T66 |
 | FR-22 | T67 |
+
+---
+
+## Task ownership (split into `modules/*/tasks.md`)
+
+Each task is owned by exactly one module, except the cross-cutting tasks below, which live only in this file.
+
+- **Cross-cutting (no single module):** T01 (test fixtures, module: all) and T68–T79 (Phase 12 acceptance on the sample folder and never-crash/Windows sweeps).
+- **T42 (ingest pipeline end to end)** names two modules, `ingest-report` and `persistence` (wiring). It is owned by `ingest-report` (the `ingest` command); `persistence` is a dependency, not a second owner.

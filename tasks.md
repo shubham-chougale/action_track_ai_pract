@@ -221,7 +221,7 @@ Conventions for the tests:
 - [x] **T56 Status and due-before filters** — module: item-listing — FR-14
   **Done when:** `--status open|done|overdue` each return the right sets; `--due-before 2026-10-01` is strictly before and excludes no-date items; `--due-before 10/01/2026` errors with non-zero exit.
 
-- [ ] **T57 Combined filters** — module: item-listing — FR-14
+- [x] **T57 Combined filters** — module: item-listing — FR-14
   **Done when:** owner + status + due-before together return only items satisfying all three.
 
 - [ ] **T58 `--today` override** — module: item-listing — FR-15

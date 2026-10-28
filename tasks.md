@@ -114,7 +114,7 @@ Conventions for the tests:
 
 ## Phase 5 — People and owners
 
-- [ ] **T27 Learn people from attendees** — module: people-roster — FR-6
+- [x] **T27 Learn people from attendees** — module: people-roster — FR-6
   **Done when:** after reading the sample folder the known people are exactly the 9 listed in requirement.md section 4, and no person comes from the roster.
 
 - [ ] **T28 Roster email loading** — module: people-roster — FR-19

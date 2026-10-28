@@ -171,7 +171,7 @@ Conventions for the tests:
   Wire scan → metadata → extract → dates → owners → merge → store.
   **Done when:** `ingest` on a small fixture folder stores the expected items with owners, dates, flags and sources.
 
-- [ ] **T43 Counts** — module: ingest-report — FR-13
+- [x] **T43 Counts** — module: ingest-report — FR-13
   **Done when:** the report prints files scanned/ingested/skipped and items new/merged/unchanged; on the sample folder: 35 scanned (the `.md` files; the `.txt` is not counted), 31 ingested, 4 skipped.
 
 - [ ] **T44 Skip reasons and flags in report** — module: ingest-report — FR-13

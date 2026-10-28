@@ -4,6 +4,7 @@ import argparse
 import sys
 
 from actiontrack.ingest import ingest_folder
+from actiontrack.report import format_report
 from actiontrack.scanner import FolderError
 
 
@@ -22,10 +23,11 @@ def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     if args.command == "ingest":
         try:
-            ingest_folder(args.folder)
+            result = ingest_folder(args.folder)
         except FolderError as err:
             print(f"error: {err}", file=sys.stderr)
             return 1
+        print(format_report(result))
     return 0
 
 

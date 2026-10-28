@@ -193,10 +193,10 @@ Conventions for the tests:
 
 ## Phase 8 — `done` command
 
-- [ ] **T49 Mark done** — module: mark-done — FR-17
+- [x] **T49 Mark done** — module: mark-done — FR-17
   **Done when:** `done 3` marks item 3 done and prints its ID, owner and task.
 
-- [ ] **T50 Done edge cases** — module: mark-done — FR-17
+- [x] **T50 Done edge cases** — module: mark-done — FR-17
   **Done when:** `done 999` and `done abc` give an error and non-zero exit; a second `done 3` prints "already done" with exit 0; a co-owned item is closed for both owners; a flagged item can be dismissed.
 
 ---

@@ -148,7 +148,7 @@ Conventions for the tests:
 - [x] **T36 Task text normalisation** — module: duplicate-merging — FR-11
   **Done when:** wording that differs only by case, articles, punctuation, or the due phrase is treated as equal; clearly different tasks are not.
 
-- [ ] **T37 Same-owner match, different-owner no match** — module: duplicate-merging — FR-11
+- [x] **T37 Same-owner match, different-owner no match** — module: duplicate-merging — FR-11
   **Done when:** the same wording with different resolved owners stays as two items; the same owners with near-identical wording merge.
 
 - [ ] **T38 Quote item merges across three notes** — module: duplicate-merging — FR-11

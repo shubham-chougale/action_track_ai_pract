@@ -70,7 +70,7 @@ Conventions for the tests:
 
 ## Phase 3 — Extracting action items
 
-- [ ] **T15 Checkbox detection** — module: action-item-extraction — FR-2
+- [x] **T15 Checkbox detection** — module: action-item-extraction — FR-2
   **Done when:** `-`, `*`, `+` with `[ ]`, `[x]`, `[X]`, at any indentation, are each found with the right open/done state.
 
 - [ ] **T16 Non-items ignored** — module: action-item-extraction — FR-2

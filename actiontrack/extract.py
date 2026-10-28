@@ -1,4 +1,4 @@
-"""Action-item extraction: find checkbox lines in a note's text."""
+"""Action-item extraction: find checkbox lines in a note's text and split them."""
 
 import re
 from dataclasses import dataclass
@@ -9,12 +9,50 @@ COMMENT = "comment"
 _CHECKBOX = re.compile(r"^\s*[-*+]\s+\[([ xX])\]\s+(\S.*?)\s*$")
 _FENCE = re.compile(r"^\s*(```|~~~)")
 
+_WEEKDAY = r"(?:mon|tue|tues|wed|thu|thur|thurs|fri|sat|sun)(?:day|sday|nesday|rsday|urday)?"
+_MONTH = (r"(?:jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)"
+          r"(?:uary|ruary|ch|il|e|y|ust|tember|ober|ember)?")
+_DATE = (
+    r"\d{4}-\d{2}-\d{2}"
+    rf"|(?:{_WEEKDAY}\.?,?\s+)?\d{{1,2}}(?:st|nd|rd|th)?\s+{_MONTH}(?:\s+\d{{4}})?"
+    rf"|(?:{_WEEKDAY}\.?,?\s+)?{_MONTH}\s+\d{{1,2}}(?:st|nd|rd|th)?"
+    rf"|(?:next\s+)?{_WEEKDAY}"
+    r"|(?:eod|cob)(?:\s+(?:tomorrow|today))?|tomorrow|today"
+    r"|end\s+of\s+(?:the\s+)?(?:next\s+)?(?:week|month|quarter|year)"
+    rf"|mid-?\s*{_MONTH}"
+    rf"|{_MONTH}"
+)
+# A due phrase is a trailing "by/due/on/for <date>" or "before the next <thing>",
+# optionally set off by a dash or comma (hyphen, en dash, em dash).
+_DUE_TAIL = re.compile(
+    rf"(?:\s*[-–—,;]\s*|\s+)(?P<due>(?:(?:by|due|on|for|until)\s+(?:{_DATE})"
+    r"|before\s+the\s+next\s+\w+))\s*$",
+    re.I,
+)
+_NAME = r"[A-Z][\w.'’-]*"
+_OWNER = re.compile(rf"^(?P<owner>{_NAME}(?:\s+{_NAME})*)\s+to\s+(?P<task>.+)$")
+_TRAIL = " \t-–—,;:"
+
 
 @dataclass
 class Item:
     line: str  # original full line, verbatim
     done: bool
     flag: str | None = None  # CODE_BLOCK or COMMENT for decoys, else None
+    owner_text: str | None = None  # raw owner wording, as written
+    task: str = ""  # the line without owner and due phrase
+    due_phrase: str | None = None  # raw due wording, e.g. "by Friday"
+
+
+def _split(body: str) -> tuple[str | None, str, str | None]:
+    """Split checkbox text into (raw owner, task, raw due phrase)."""
+    due = None
+    if m := _DUE_TAIL.search(body):
+        due, body = m.group("due"), body[: m.start()]
+    owner = None
+    if m := _OWNER.match(body):
+        owner, body = m.group("owner"), m.group("task")
+    return owner, body.strip(_TRAIL), due
 
 
 def extract_items(text: str) -> list[Item]:
@@ -39,5 +77,6 @@ def extract_items(text: str) -> list[Item]:
             fence = m.group(1)
             continue
         if m := _CHECKBOX.match(candidate):
-            items.append(Item(line=line, done=m.group(1) != " ", flag=flag))
+            owner, task, due = _split(m.group(2))
+            items.append(Item(line, m.group(1) != " ", flag, owner, task, due))
     return items

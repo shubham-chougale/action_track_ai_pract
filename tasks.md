@@ -82,7 +82,7 @@ Conventions for the tests:
 - [x] **T18 Decoys flagged** — module: action-item-extraction — FR-3
   **Done when:** in 2026-10-09-security-review.md the fenced-block template item and the HTML-commented item are extracted, each carries a flag with reason "code block" / "comment", and the real items are not flagged.
 
-- [ ] **T19 Split line into owner, task, due phrase** — module: action-item-extraction — FR-9
+- [x] **T19 Split line into owner, task, due phrase** — module: action-item-extraction — FR-9
   **Done when:** `Priya N. to send the slides by Friday` gives owner text `Priya N.`, task `send the slides`, due phrase `by Friday`, and the original line is kept verbatim; the em-dash variant from 2026-09-08 leaves no stray dash in the task text.
 
 - [ ] **T20 Owner-less and unusual owner syntax split** — module: action-item-extraction — FR-9, FR-7, FR-8

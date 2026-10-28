@@ -104,7 +104,12 @@ def _followup(args) -> int:
         print(f"error: {err}", file=sys.stderr)
         return 1
     items = select_items(store.all(), owner, today)
-    print(f"{owner}: {len(items)} open or overdue items")
+    unassigned = count_unassigned(store.all())
+    if not items:
+        print(f"No open or overdue items for {owner}; no draft created.")
+    else:
+        print(f"{owner}: {len(items)} open or overdue items")
+    print(f"Unassigned items: {unassigned} (never included in a follow-up)")
     return 0
 
 

@@ -237,7 +237,7 @@ Conventions for the tests:
 - [x] **T60 Owner resolution in followup** — module: followup-email — FR-18
   **Done when:** `followup Priya` fails with the candidate list and non-zero exit; `followup "Priya Nair"` proceeds.
 
-- [ ] **T61 No-items case and unassigned count** — module: followup-email — FR-18
+- [x] **T61 No-items case and unassigned count** — module: followup-email — FR-18
   **Done when:** an owner with no qualifying items creates no draft and prints a message; the run prints how many unassigned items exist.
 
 - [ ] **T62 Subject line** — module: followup-email — FR-20

@@ -57,7 +57,7 @@ Conventions for the tests:
 - [x] **T11 Folder scan scope** — module: note-scanning — FR-1
   **Done when:** on the sample folder the scan lists 35 `.md` files, ignores the `.txt` silently (not in skipped list), and a fixture subfolder's `.md` is not scanned.
 
-- [ ] **T12 Fatal folder errors** — module: note-scanning — FR-1
+- [x] **T12 Fatal folder errors** — module: note-scanning — FR-1
   **Done when:** a missing path and a path that is a file each give an error message and non-zero exit.
 
 - [ ] **T13 Malformed-note skipping** — module: note-scanning — FR-5

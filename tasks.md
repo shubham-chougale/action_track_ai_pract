@@ -76,7 +76,7 @@ Conventions for the tests:
 - [x] **T16 Non-items ignored** — module: action-item-extraction — FR-2
   **Done when:** the table row and `ACTION:` line in 2026-09-30-q4-offsite.md produce no items.
 
-- [ ] **T17 Nested items independent** — module: action-item-extraction — FR-2
+- [x] **T17 Nested items independent** — module: action-item-extraction — FR-2
   **Done when:** Karan's item nested under Meera's in the offsite note yields two separate items with no link between them.
 
 - [ ] **T18 Decoys flagged** — module: action-item-extraction — FR-3

@@ -6,7 +6,7 @@ Tasks owned by this module, copied from the top-level `tasks.md` (do not edit he
   **Done when:** `-`, `*`, `+` with `[ ]`, `[x]`, `[X]`, at any indentation, are each found with the right open/done state.
 - [x] **T16 Non-items ignored** — FR: FR-2
   **Done when:** the table row and `ACTION:` line in 2026-09-30-q4-offsite.md produce no items.
-- [ ] **T17 Nested items independent** — FR: FR-2
+- [x] **T17 Nested items independent** — FR: FR-2
   **Done when:** Karan's item nested under Meera's in the offsite note yields two separate items with no link between them.
 - [ ] **T18 Decoys flagged** — FR: FR-3
   **Done when:** in 2026-10-09-security-review.md the fenced-block template item and the HTML-commented item are extracted, each carries a flag with reason "code block" / "comment", and the real items are not flagged.

@@ -1,6 +1,8 @@
 """Item listing: status, filters and output for `actiontrack list`."""
 
-from actiontrack.display import owner_label
+import json
+
+from actiontrack.display import owner_label, owner_labels
 from actiontrack.store import Item
 
 
@@ -36,7 +38,31 @@ def _status_label(item: Item, today: str) -> str:
     return f"{status} [!]" if item.flagged else status
 
 
+def filter_items(items: list[Item], today: str, status: str | None = None) -> list[Item]:
+    return [i for i in items if status is None or item_status(i, today) == status]
+
+
+def render_json(items: list[Item], today: str) -> str:
+    """The same items and order as the table, as a JSON list."""
+    out = []
+    for item in sort_items(items):
+        out.append({
+            "id": item.id,
+            "owners": owner_labels(item),
+            "task": item.task,
+            "due": item.due,
+            "due_raw": item.due_raw,
+            "status": item_status(item, today),
+            "flagged": item.flagged,
+            "flag_reason": item.flag_reason,
+            "sources": item.sources,
+        })
+    return json.dumps(out, indent=2)
+
+
 def render_table(items: list[Item], today: str) -> str:
+    if not items:
+        return "No items match"
     rows = [("ID", "Owner(s)", "Task", "Due", "Status", "Source")]
     for item in sort_items(items):
         rows.append((str(item.id), owner_label(item), item.task, _due_label(item),

@@ -212,7 +212,7 @@ Conventions for the tests:
 - [x] **T53 Due, source and flag display** — module: item-listing — FR-16
   **Done when:** unresolved date shows the raw phrase marked `?`; no date shows `-`; a flagged item shows a flag marker; a merged item shows its latest source plus the count of other mentions; a co-owned item appears under each owner.
 
-- [ ] **T54 Empty result and JSON** — module: item-listing — FR-16
+- [x] **T54 Empty result and JSON** — module: item-listing — FR-16
   **Done when:** a filter with no matches prints `No items match`; `--json` output parses as valid JSON with the same items as the table.
 
 - [ ] **T55 Owner filter** — module: item-listing — FR-14

@@ -6,7 +6,7 @@ from datetime import date
 
 from actiontrack.done import DoneError, describe, mark_done
 from actiontrack.ingest import ingest_folder
-from actiontrack.listing import render_table
+from actiontrack.listing import filter_items, render_json, render_table
 from actiontrack.report import format_report
 from actiontrack.scanner import FolderError
 from actiontrack.store import Store
@@ -23,6 +23,8 @@ def build_parser() -> argparse.ArgumentParser:
     done = sub.add_parser("done", help="mark an action item done")
     done.add_argument("id")
     listing = sub.add_parser("list", help="show tracked action items")
+    listing.add_argument("--status", choices=["open", "done", "overdue"])
+    listing.add_argument("--json", action="store_true", help="machine-readable output")
     listing.add_argument("--today", help="treat this YYYY-MM-DD as today (for stable results)")
     return parser
 
@@ -45,7 +47,8 @@ def main(argv: list[str] | None = None) -> int:
         print(f"Item already done: {describe(item)}" if already else f"Marked done: {describe(item)}")
     elif args.command == "list":
         today = args.today or date.today().isoformat()
-        print(render_table(Store().all(), today))
+        items = filter_items(Store().all(), today, args.status)
+        print(render_json(items, today) if args.json else render_table(items, today))
     return 0
 
 

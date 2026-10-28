@@ -1,5 +1,8 @@
 """People roster: known people, learned from Attendees lines only."""
 
+import csv
+from pathlib import Path
+
 
 class People:
     """Known people in first-seen order, each with an optional email."""
@@ -20,3 +23,22 @@ class People:
 
     def names(self) -> list[str]:
         return list(self._emails)
+
+    def email(self, name: str) -> str | None:
+        return self._emails.get(name)
+
+    def load_roster(self, path: Path | str) -> None:
+        """Attach emails from a `name,email` CSV by exact full name. Never raises.
+
+        A missing or unreadable file, a missing person, and a row for an unknown
+        name are all fine: the roster supplies emails only and adds no people.
+        """
+        try:
+            with open(path, newline="", encoding="utf-8-sig") as handle:
+                for row in csv.DictReader(handle):
+                    name = (row.get("name") or "").strip()
+                    email = (row.get("email") or "").strip()
+                    if name in self._emails and email:
+                        self._emails[name] = email
+        except (OSError, UnicodeDecodeError, csv.Error):
+            return

@@ -138,7 +138,7 @@ Conventions for the tests:
 - [x] **T34 Owner: non-person and missing** — module: owner-resolution — FR-7
   **Done when:** `Someone`, `TBD`, `Everyone`, `Team`, `Owner` and a line with no owner give Unassigned with original wording preserved, e.g. "Someone to update the CRM notes".
 
-- [ ] **T35 Owner: co-owners** — module: owner-resolution — FR-8
+- [x] **T35 Owner: co-owners** — module: owner-resolution — FR-8
   **Done when:** `Anita & Rahul` in 2026-09-18-design-review.md gives owners Anita Desai and Rahul Mehta (resolved by that meeting's attendees); `Lena (with Priya)` gives two owners.
 
 ---

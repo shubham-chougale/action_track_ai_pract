@@ -160,7 +160,7 @@ Conventions for the tests:
 - [x] **T40 Latest-wins for due date** — module: duplicate-merging — FR-11
   **Done when:** a later due date replaces an earlier one; a later mention with no due date keeps the existing one.
 
-- [ ] **T41 Manual done overrides merges** — module: duplicate-merging — FR-11, FR-12
+- [x] **T41 Manual done overrides merges** — module: duplicate-merging — FR-11, FR-12
   **Done when:** after a manual `done`, a later note with `[ ]` for the same item leaves it done.
 
 ---

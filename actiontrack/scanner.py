@@ -39,7 +39,7 @@ def scan_folder(folder: Path | str) -> ScanResult:
         raise FolderError(f"not a folder: {folder}")
 
     result = ScanResult()
-    for path in folder.iterdir():
+    for path in sorted(folder.iterdir(), key=lambda p: p.name):
         if path.suffix.lower() != ".md" or not path.is_file():
             continue
         result.scanned += 1

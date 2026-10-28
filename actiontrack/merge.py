@@ -66,7 +66,10 @@ def merge_mention(store: Store, m: Mention) -> str:
             latest = max(src["date"] for src in item.sources)
             store.add_source(item.id, m.source)
             if m.source["date"] >= latest:  # the latest meeting wins
-                store.update(item.id, status="done" if m.done else "open")
+                changes = {"status": "done" if m.done else "open"}
+                if m.due or m.due_raw:  # a mention with no due date keeps the existing one
+                    changes.update(due=m.due, due_raw=m.due_raw)
+                store.update(item.id, **changes)
             return "merged"
     item = store.add(
         task=m.task, owners=m.owners, original_line=m.original_line, due=m.due,

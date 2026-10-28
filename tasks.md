@@ -157,7 +157,7 @@ Conventions for the tests:
 - [x] **T39 Latest-wins for status** — module: duplicate-merging — FR-11
   **Done when:** a later `[x]` sets done; a later `[ ]` after that reopens it; processing notes in date order, not file order, gives the same result.
 
-- [ ] **T40 Latest-wins for due date** — module: duplicate-merging — FR-11
+- [x] **T40 Latest-wins for due date** — module: duplicate-merging — FR-11
   **Done when:** a later due date replaces an earlier one; a later mention with no due date keeps the existing one.
 
 - [ ] **T41 Manual done overrides merges** — module: duplicate-merging — FR-11, FR-12

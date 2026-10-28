@@ -21,6 +21,8 @@ class Resolution:
     def flagged(self) -> bool:
         return self.kind in (AMBIGUOUS, UNKNOWN)
 
+
+NON_PERSON = {"someone", "tbd", "everyone", "team", "owner"}
 _INITIAL = re.compile(r"^(\S+)\s+([A-Za-z])\.?$")
 
 
@@ -30,6 +32,8 @@ def _first(name: str) -> str:
 
 def resolve_owner(raw: str | None, attendees: list[str], people: People) -> Resolution:
     text = " ".join((raw or "").split())
+    if not text or text.casefold() in NON_PERSON:
+        return Resolution(UNASSIGNED, [], raw)
     handle = text.removeprefix("@")
     known = people.names()
     for name in known:

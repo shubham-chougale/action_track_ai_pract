@@ -135,7 +135,7 @@ Conventions for the tests:
 - [x] **T33 Owner: first name + initial** — module: owner-resolution — FR-6
   **Done when:** `Priya N.` → Priya Nair and `Priya S.` → Priya Shah; an initial matching nobody gives "unknown".
 
-- [ ] **T34 Owner: non-person and missing** — module: owner-resolution — FR-7
+- [x] **T34 Owner: non-person and missing** — module: owner-resolution — FR-7
   **Done when:** `Someone`, `TBD`, `Everyone`, `Team`, `Owner` and a line with no owner give Unassigned with original wording preserved, e.g. "Someone to update the CRM notes".
 
 - [ ] **T35 Owner: co-owners** — module: owner-resolution — FR-8

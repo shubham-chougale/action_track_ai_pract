@@ -10,7 +10,7 @@ Tasks owned by this module, copied from the top-level `tasks.md` (do not edit he
   **Done when:** `Priya` and `Rahul` in 2026-09-30-q4-offsite.md resolve to "ambiguous", keep raw text, and are flagged.
 - [x] **T33 Owner: first name + initial** — FR: FR-6
   **Done when:** `Priya N.` → Priya Nair and `Priya S.` → Priya Shah; an initial matching nobody gives "unknown".
-- [ ] **T34 Owner: non-person and missing** — FR: FR-7
+- [x] **T34 Owner: non-person and missing** — FR: FR-7
   **Done when:** `Someone`, `TBD`, `Everyone`, `Team`, `Owner` and a line with no owner give Unassigned with original wording preserved, e.g. "Someone to update the CRM notes".
 - [ ] **T35 Owner: co-owners** — FR: FR-8
   **Done when:** `Anita & Rahul` in 2026-09-18-design-review.md gives owners Anita Desai and Rahul Mehta (resolved by that meeting's attendees); `Lena (with Priya)` gives two owners.

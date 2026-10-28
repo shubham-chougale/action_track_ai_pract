@@ -18,6 +18,7 @@ class IngestResult:
     ingested: int = 0
     skipped: list[Skipped] = field(default_factory=list)
     counts: dict[str, int] = field(default_factory=lambda: {"new": 0, "merged": 0, "unchanged": 0})
+    flagged: list[Mention] = field(default_factory=list)  # every flagged mention seen this run
 
 
 def _owner_entries(resolution) -> list[dict]:
@@ -33,7 +34,7 @@ def note_mentions(note: Note, people: People) -> list[Mention]:
     for item in extract_items(note.text):
         resolution = resolve_owner(item.owner_text, note.meta.attendees, people)
         due = resolve_due(item.due_phrase, note.meta.date)
-        reasons = [r for r in (item.flag, resolution.kind if resolution.flagged else None,
+        reasons = [r for r in (item.flag, f"{resolution.kind} owner" if resolution.flagged else None,
                                due.flag) if r]
         mentions.append(Mention(
             owners=_owner_entries(resolution), task=item.task, original_line=item.line,
@@ -53,4 +54,5 @@ def ingest_folder(folder: Path | str, base: Path | str | None = None) -> IngestR
     people = People.from_notes(scan.notes)
     mentions = [m for note in scan.notes for m in note_mentions(note, people)]
     counts = merge_mentions(Store(base), mentions)
-    return IngestResult(scan.scanned, len(scan.notes), scan.skipped, counts)
+    flagged = [m for m in mentions if m.flagged]
+    return IngestResult(scan.scanned, len(scan.notes), scan.skipped, counts, flagged)

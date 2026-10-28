@@ -246,7 +246,7 @@ Conventions for the tests:
 - [x] **T63 Body layout** — module: followup-email — FR-20
   **Done when:** body is plain text, starts `Hi Priya,`, has a short intro, then **Overdue** before **Open**; each item shows task, due date (or raw phrase, or "no due date"), source meeting name and date, and item ID; no sign-off is added by the tool.
 
-- [ ] **T64 Recipient from roster** — module: followup-email — FR-19
+- [x] **T64 Recipient from roster** — module: followup-email — FR-19
   **Done when:** with a roster row the recipient is that email; with no roster file or no row the draft content is still produced with no recipient and a warning printed.
 
 ---

@@ -7,6 +7,7 @@ from pathlib import Path
 DATA_DIR_NAME = ".actiontrack"
 ITEMS_FILE = "items.json"
 PEOPLE_FILE = "people.json"
+ROSTER_FILE = "roster.csv"
 
 
 def data_dir(base: Path | str | None = None) -> Path:

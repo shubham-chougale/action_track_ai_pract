@@ -5,14 +5,15 @@ import re
 import sys
 from datetime import date
 
-from actiontrack.followup import count_unassigned, select_items
+from actiontrack.followup import compose, count_unassigned, select_items
+from actiontrack.gmail import DraftError, create_draft
 from actiontrack.done import DoneError, describe, mark_done
 from actiontrack.ingest import ingest_folder
 from actiontrack.listing import filter_items, render_json, render_table
 from actiontrack.people import LookupFailure, People
 from actiontrack.report import format_report
 from actiontrack.scanner import FolderError
-from actiontrack.store import Store
+from actiontrack.store import ROSTER_FILE, Store, data_dir
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -98,6 +99,7 @@ def _followup(args) -> int:
     store = Store()
     people = People()
     people.learn(store.people_names())
+    people.load_roster(data_dir() / ROSTER_FILE)
     try:
         owner = people.find(args.owner)
     except LookupFailure as err:
@@ -108,7 +110,17 @@ def _followup(args) -> int:
     if not items:
         print(f"No open or overdue items for {owner}; no draft created.")
     else:
-        print(f"{owner}: {len(items)} open or overdue items")
+        recipient = people.email(owner)
+        if recipient is None:
+            print(f"warning: no email for {owner} in {data_dir() / ROSTER_FILE}; "
+                  "the draft has no recipient", file=sys.stderr)
+        subject, body = compose(owner, items, today)
+        try:
+            draft_id = create_draft(recipient, subject, body)
+        except DraftError as err:
+            print(f"error: {err}", file=sys.stderr)
+            return 1
+        print(f"Draft created for {owner} ({len(items)} items): {draft_id}")
     print(f"Unassigned items: {unassigned} (never included in a follow-up)")
     return 0
 

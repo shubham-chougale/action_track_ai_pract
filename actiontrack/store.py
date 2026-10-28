@@ -59,3 +59,22 @@ class Store:
 
     def all(self) -> list[Item]:
         return sorted(self._items.values(), key=lambda i: i.first_seen_order)
+
+    def add_source(self, item_id: int, source: dict) -> None:
+        item = self._items[item_id]
+        if source not in item.sources:
+            item.sources.append(source)
+            self._save()
+
+    def update(self, item_id: int, **changes) -> Item:
+        """Change fields on an item; id, first_seen_order and sources are never touched."""
+        immutable = {"id", "first_seen_order", "sources"} & changes.keys()
+        if immutable:
+            raise ValueError(f"cannot update {sorted(immutable)}")
+        item = self._items[item_id]
+        for key, value in changes.items():
+            if not hasattr(item, key):
+                raise ValueError(f"unknown item field: {key}")
+            setattr(item, key, value)
+        self._save()
+        return item

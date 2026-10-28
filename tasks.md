@@ -31,7 +31,7 @@ Conventions for the tests:
 - [x] **T04 Sequential IDs** — module: persistence — FR-12
   **Done when:** three items get IDs 1, 2, 3; deleting nothing and re-opening the store keeps them; the next new item gets 4 (never a reused number).
 
-- [ ] **T05 Update item without losing fields** — module: persistence — FR-12
+- [x] **T05 Update item without losing fields** — module: persistence — FR-12
   Add a source to an item; change status or due date.
   **Done when:** after the update, ID and first-seen order are unchanged and earlier sources are all still present.
 

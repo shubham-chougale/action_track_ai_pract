@@ -2,7 +2,7 @@
 
 Tasks owned by this module, copied from the top-level `tasks.md` (do not edit here; change the top-level file and re-split).
 
-- [ ] **T21 Explicit dates** — FR: FR-10
+- [x] **T21 Explicit dates** — FR: FR-10
   **Done when:** `by 2026-09-08` → 2026-09-08; `Wed 16 Sep` → 2026-09-16.
 - [ ] **T22 Weekday rule** — FR: FR-10
   **Done when:** for a meeting on Tue 2026-09-01, `Friday` → 2026-09-04; for a Monday meeting, `Mon` → 7 days later; `next Tuesday` returns one specific date.

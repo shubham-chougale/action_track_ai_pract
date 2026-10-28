@@ -92,7 +92,7 @@ Conventions for the tests:
 
 ## Phase 4 — Due dates
 
-- [ ] **T21 Explicit dates** — module: due-date-resolution — FR-10
+- [x] **T21 Explicit dates** — module: due-date-resolution — FR-10
   **Done when:** `by 2026-09-08` → 2026-09-08; `Wed 16 Sep` → 2026-09-16.
 
 - [ ] **T22 Weekday rule** — module: due-date-resolution — FR-10

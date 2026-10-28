@@ -98,7 +98,7 @@ Conventions for the tests:
 - [x] **T22 Weekday rule** — module: due-date-resolution — FR-10
   **Done when:** for a meeting on Tue 2026-09-01, `Friday` → 2026-09-04; for a Monday meeting, `Mon` → 7 days later; `next Tuesday` returns one specific date.
 
-- [ ] **T23 Tomorrow and EOD** — module: due-date-resolution — FR-10
+- [x] **T23 Tomorrow and EOD** — module: due-date-resolution — FR-10
   **Done when:** `tomorrow` = meeting+1; `EOD` = meeting date; `by EOD tomorrow` = meeting+1.
 
 - [ ] **T24 Day+month without year** — module: due-date-resolution — FR-10

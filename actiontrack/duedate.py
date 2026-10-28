@@ -47,6 +47,10 @@ def _weekday_after(weekday: int, meeting: date) -> date:
 
 
 def _resolve(text: str, meeting: date) -> date | None:
+    if text in ("eod", "cob", "today", "eod today", "cob today"):
+        return meeting
+    if text in ("tomorrow", "eod tomorrow", "cob tomorrow"):
+        return meeting + timedelta(days=1)
     if text in _WEEKDAYS:
         return _weekday_after(_WEEKDAYS[text], meeting)
     if (m := _NEXT_WEEKDAY.match(text)) and m.group(1) in _WEEKDAYS:

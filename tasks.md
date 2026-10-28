@@ -243,7 +243,7 @@ Conventions for the tests:
 - [x] **T62 Subject line** — module: followup-email — FR-20
   **Done when:** subject is `Action items follow-up: Priya Nair (<n> overdue, <m> open)` and n, m equal the counts in the body.
 
-- [ ] **T63 Body layout** — module: followup-email — FR-20
+- [x] **T63 Body layout** — module: followup-email — FR-20
   **Done when:** body is plain text, starts `Hi Priya,`, has a short intro, then **Overdue** before **Open**; each item shows task, due date (or raw phrase, or "no due date"), source meeting name and date, and item ID; no sign-off is added by the tool.
 
 - [ ] **T64 Recipient from roster** — module: followup-email — FR-19

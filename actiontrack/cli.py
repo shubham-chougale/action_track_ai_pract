@@ -3,7 +3,8 @@
 import argparse
 import sys
 
-from actiontrack.scanner import FolderError, scan_folder
+from actiontrack.ingest import ingest_folder
+from actiontrack.scanner import FolderError
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -21,7 +22,7 @@ def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     if args.command == "ingest":
         try:
-            scan_folder(args.folder)
+            ingest_folder(args.folder)
         except FolderError as err:
             print(f"error: {err}", file=sys.stderr)
             return 1

@@ -167,7 +167,7 @@ Conventions for the tests:
 
 ## Phase 7 — Ingest command and report
 
-- [ ] **T42 Ingest pipeline end to end** — module: ingest-report, persistence (wiring) — FR-1..FR-12
+- [x] **T42 Ingest pipeline end to end** — module: ingest-report, persistence (wiring) — FR-1..FR-12
   Wire scan → metadata → extract → dates → owners → merge → store.
   **Done when:** `ingest` on a small fixture folder stores the expected items with owners, dates, flags and sources.
 

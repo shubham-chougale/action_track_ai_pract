@@ -2,7 +2,7 @@
 
 import re
 from dataclasses import dataclass
-from datetime import date
+from datetime import date, timedelta
 
 from actiontrack.metadata import _MONTHS
 
@@ -10,6 +10,15 @@ _LEAD = re.compile(r"^(?:by|due|on|for|until)\s+", re.I)
 _ISO = re.compile(r"^(\d{4})-(\d{2})-(\d{2})$")
 _WEEKDAY_PREFIX = r"(?:[a-z]+\.?,?\s+)?"
 _DAY_MONTH = re.compile(rf"^{_WEEKDAY_PREFIX}(\d{{1,2}})(?:st|nd|rd|th)?\s+([a-z]+)(?:\s+(\d{{4}}))?$")
+_WEEKDAYS = {
+    name: number
+    for number, names in enumerate(
+        ("monday mon", "tuesday tue tues", "wednesday wed", "thursday thu thur thurs",
+         "friday fri", "saturday sat", "sunday sun")
+    )
+    for name in names.split()
+}
+_NEXT_WEEKDAY = re.compile(r"^next\s+([a-z]+)$")
 _MONTH_DAY = re.compile(rf"^{_WEEKDAY_PREFIX}([a-z]+)\s+(\d{{1,2}})(?:st|nd|rd|th)?$")
 
 
@@ -32,7 +41,18 @@ def _nearest(day: int, month: int, meeting: date) -> date | None:
     return None
 
 
+def _weekday_after(weekday: int, meeting: date) -> date:
+    """First such weekday strictly after the meeting date (7 days later on the same weekday)."""
+    return meeting + timedelta(days=(weekday - meeting.weekday()) % 7 or 7)
+
+
 def _resolve(text: str, meeting: date) -> date | None:
+    if text in _WEEKDAYS:
+        return _weekday_after(_WEEKDAYS[text], meeting)
+    if (m := _NEXT_WEEKDAY.match(text)) and m.group(1) in _WEEKDAYS:
+        # "next <weekday>" is that weekday in the following Mon-Sun week.
+        monday = meeting - timedelta(days=meeting.weekday())
+        return monday + timedelta(days=7 + _WEEKDAYS[m.group(1)])
     if m := _ISO.match(text):
         try:
             return date(*map(int, m.groups()))

@@ -240,7 +240,7 @@ Conventions for the tests:
 - [x] **T61 No-items case and unassigned count** — module: followup-email — FR-18
   **Done when:** an owner with no qualifying items creates no draft and prints a message; the run prints how many unassigned items exist.
 
-- [ ] **T62 Subject line** — module: followup-email — FR-20
+- [x] **T62 Subject line** — module: followup-email — FR-20
   **Done when:** subject is `Action items follow-up: Priya Nair (<n> overdue, <m> open)` and n, m equal the counts in the body.
 
 - [ ] **T63 Body layout** — module: followup-email — FR-20

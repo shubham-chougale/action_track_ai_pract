@@ -186,7 +186,7 @@ Conventions for the tests:
 - [x] **T47 Re-ingest after done and after new notes** — module: persistence — FR-12
   **Done when:** after `done` on an item, re-ingest keeps it done; after adding one new note, only that note's new items and sources are added; existing IDs are unchanged.
 
-- [ ] **T48 Notes untouched** — module: persistence — NFR
+- [x] **T48 Notes untouched** — module: persistence — NFR
   **Done when:** file hashes of every note are identical before and after ingest.
 
 ---

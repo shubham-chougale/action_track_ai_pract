@@ -2,7 +2,7 @@
 
 Tasks owned by this module, copied from the top-level `tasks.md` (do not edit here; change the top-level file and re-split).
 
-- [ ] **T30 Owner: full name, first name, handle** — FR: FR-6
+- [x] **T30 Owner: full name, first name, handle** — FR: FR-6
   **Done when:** `Anita Desai`, `Anita` (attendee), `@anita` all resolve to Anita Desai.
 - [ ] **T31 Owner: attendees-first, then global** — FR: FR-6
   **Done when:** a first name matching exactly one attendee resolves to them even if another person elsewhere shares it; a first name with no attendee match resolves to the single known person with that name; with no match anywhere it is "unknown".

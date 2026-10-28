@@ -107,7 +107,7 @@ Conventions for the tests:
 - [x] **T25 Unresolvable phrases** — module: due-date-resolution — FR-10
   **Done when:** `mid-October`, `end of month`, `end of next week`, `for November`, `before the next review` each give empty date, keep the raw phrase, and set the "unresolved date" flag; no phrase gives empty date with no flag.
 
-- [ ] **T26 Determinism** — module: due-date-resolution — FR-10, NFR
+- [x] **T26 Determinism** — module: due-date-resolution — FR-10, NFR
   **Done when:** running every phrase in the sample notes twice gives identical results.
 
 ---
@@ -123,7 +123,7 @@ Conventions for the tests:
 - [x] **T29 Name lookup rules** — module: people-roster — FR-14, FR-18
   **Done when:** `Priya Nair` and `priya nair` find one person; `Anita` finds Anita Desai; `Priya` fails with a message listing Priya Nair and Priya Shah; `Rahul` lists both Rahuls; `unassigned` is accepted where allowed.
 
-- [ ] **T30 Owner: full name, first name, handle** — module: owner-resolution — FR-6
+- [x] **T30 Owner: full name, first name, handle** — module: owner-resolution — FR-6
   **Done when:** `Anita Desai`, `Anita` (attendee), `@anita` all resolve to Anita Desai.
 
 - [ ] **T31 Owner: attendees-first, then global** — module: owner-resolution — FR-6

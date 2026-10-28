@@ -2,7 +2,7 @@
 
 Tasks owned by this module, copied from the top-level `tasks.md` (do not edit here; change the top-level file and re-split).
 
-- [ ] **T07 Meeting metadata, header style A** — FR: FR-4
+- [x] **T07 Meeting metadata, header style A** — FR: FR-4
   **Done when:** a style A fixture returns title, date `YYYY-MM-DD` and the attendee list.
 - [ ] **T08 Meeting metadata, header style B** — FR: FR-4
   **Done when:** 2026-09-16-standup.md (YAML front matter, bracketed attendees) returns the same shape as style A.

@@ -42,7 +42,7 @@ Conventions for the tests:
 
 ## Phase 2 — Reading a note
 
-- [ ] **T07 Meeting metadata, header style A** — module: meeting-metadata — FR-4
+- [x] **T07 Meeting metadata, header style A** — module: meeting-metadata — FR-4
   **Done when:** a style A fixture returns title, date `YYYY-MM-DD` and the attendee list.
 
 - [ ] **T08 Meeting metadata, header style B** — module: meeting-metadata — FR-4

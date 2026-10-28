@@ -280,6 +280,7 @@ Conventions for the tests:
 - [x] **T77 Check 10: re-ingest** — **Done when:** after using `done`, a second `ingest notes` reports 0 new items and changes nothing. (SC5)
 - [x] **T78 Never-crash sweep** — **Done when:** every command run against the sample folder, the fixtures, and a folder of garbage files produces a message or report and never a crash; the notes folder stays unmodified. (NFR)
 - [ ] **T79 Windows run** — **Done when:** T68–T78 pass on Windows from a normal terminal, including paths with spaces.
+  _Note: T68-T75, T77, T78 and the mocked T76 pass on Windows (PowerShell, paths with spaces). Left unticked only because T76/T65 need a real Gmail draft (X-001)._
 
 ---
 

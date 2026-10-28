@@ -126,7 +126,7 @@ Conventions for the tests:
 - [x] **T30 Owner: full name, first name, handle** — module: owner-resolution — FR-6
   **Done when:** `Anita Desai`, `Anita` (attendee), `@anita` all resolve to Anita Desai.
 
-- [ ] **T31 Owner: attendees-first, then global** — module: owner-resolution — FR-6
+- [x] **T31 Owner: attendees-first, then global** — module: owner-resolution — FR-6
   **Done when:** a first name matching exactly one attendee resolves to them even if another person elsewhere shares it; a first name with no attendee match resolves to the single known person with that name; with no match anywhere it is "unknown".
 
 - [ ] **T32 Owner: ambiguous** — module: owner-resolution — FR-6

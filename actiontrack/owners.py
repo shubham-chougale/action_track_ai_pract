@@ -32,7 +32,11 @@ def resolve_owner(raw: str | None, attendees: list[str], people: People) -> Reso
     for name in known:
         if name.casefold() == handle.casefold():
             return Resolution(RESOLVED, [name], raw)
-    matches = [n for n in known if _first(n) == handle.casefold()]
-    if len(matches) == 1:
-        return Resolution(RESOLVED, matches, raw)
-    return Resolution(AMBIGUOUS if matches else UNKNOWN, [], raw)
+    # A bare first name: that meeting's attendees first, then everyone known.
+    for pool in ([n for n in attendees if n in known], known):
+        matches = [n for n in pool if _first(n) == handle.casefold()]
+        if len(matches) == 1:
+            return Resolution(RESOLVED, matches, raw)
+        if matches:
+            return Resolution(AMBIGUOUS, [], raw)
+    return Resolution(UNKNOWN, [], raw)

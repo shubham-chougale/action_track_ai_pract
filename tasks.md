@@ -85,7 +85,7 @@ Conventions for the tests:
 - [x] **T19 Split line into owner, task, due phrase** — module: action-item-extraction — FR-9
   **Done when:** `Priya N. to send the slides by Friday` gives owner text `Priya N.`, task `send the slides`, due phrase `by Friday`, and the original line is kept verbatim; the em-dash variant from 2026-09-08 leaves no stray dash in the task text.
 
-- [ ] **T20 Owner-less and unusual owner syntax split** — module: action-item-extraction — FR-9, FR-7, FR-8
+- [x] **T20 Owner-less and unusual owner syntax split** — module: action-item-extraction — FR-9, FR-7, FR-8
   **Done when:** lines with `@anita`, `Anita & Rahul`, `Lena (with Priya)`, `Someone`, and no owner each yield the expected raw owner text (or none).
 
 ---

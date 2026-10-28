@@ -30,7 +30,12 @@ _DUE_TAIL = re.compile(
     re.I,
 )
 _NAME = r"[A-Z][\w.'’-]*"
-_OWNER = re.compile(rf"^(?P<owner>{_NAME}(?:\s+{_NAME})*)\s+to\s+(?P<task>.+)$")
+_PERSON = rf"(?:@\w+|{_NAME}(?:\s+{_NAME})*)"
+# "Priya", "Priya N.", "@anita", "A & B", "A and B", "A (with B)", then "to <task>" or ": <task>".
+_OWNER = re.compile(
+    rf"^(?P<owner>{_PERSON}(?:\s*(?:&|and)\s*{_PERSON})*(?:\s*\(with\s+{_PERSON}\))?)"
+    r"(?:\s+to\s+|\s*:\s+)(?P<task>.+)$"
+)
 _TRAIL = " \t-–—,;:"
 
 

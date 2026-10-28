@@ -203,7 +203,7 @@ Conventions for the tests:
 
 ## Phase 9 — `list` command
 
-- [ ] **T51 Status definitions** — module: item-listing — FR-15
+- [x] **T51 Status definitions** — module: item-listing — FR-15
   **Done when:** with `--today 2026-10-28`: open item due 10-27 → overdue; due 10-28 → open; done item with past date → done; no-date item → open; flagged item with past date → never overdue; unresolved-date item → never overdue.
 
 - [ ] **T52 Default output order and columns** — module: item-listing — FR-16

@@ -2,7 +2,7 @@
 
 Tasks owned by this module, copied from the top-level `tasks.md` (do not edit here; change the top-level file and re-split).
 
-- [ ] **T51 Status definitions** — FR: FR-15
+- [x] **T51 Status definitions** — FR: FR-15
   **Done when:** with `--today 2026-10-28`: open item due 10-27 → overdue; due 10-28 → open; done item with past date → done; no-date item → open; flagged item with past date → never overdue; unresolved-date item → never overdue.
 - [ ] **T52 Default output order and columns** — FR: FR-16
   **Done when:** all items (including done) print sorted by due date, no-due-date last, with columns ID, Owner(s), Task, Due, Status, Source; the table ends with a total count.

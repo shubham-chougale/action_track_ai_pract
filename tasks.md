@@ -177,7 +177,7 @@ Conventions for the tests:
 - [x] **T44 Skip reasons and flags in report** — module: ingest-report — FR-13
   **Done when:** the report lists each of the 4 skipped files with its reason, and lists flagged items grouped as ambiguous/unknown owner, unresolved due phrase, and code-block/comment items.
 
-- [ ] **T45 Exit codes** — module: ingest-report — FR-13
+- [x] **T45 Exit codes** — module: ingest-report — FR-13
   **Done when:** exit 0 with skipped notes; non-zero only for the fatal folder errors from T12.
 
 - [ ] **T46 Idempotent re-ingest** — module: persistence — FR-12, SC5

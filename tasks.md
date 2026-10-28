@@ -54,7 +54,7 @@ Conventions for the tests:
 - [x] **T10 No filename-date fallback** — module: meeting-metadata — FR-4
   **Done when:** a note named `2026-09-09-x.md` with no body date is reported missing date, not dated 2026-09-09.
 
-- [ ] **T11 Folder scan scope** — module: note-scanning — FR-1
+- [x] **T11 Folder scan scope** — module: note-scanning — FR-1
   **Done when:** on the sample folder the scan lists 35 `.md` files, ignores the `.txt` silently (not in skipped list), and a fixture subfolder's `.md` is not scanned.
 
 - [ ] **T12 Fatal folder errors** — module: note-scanning — FR-1

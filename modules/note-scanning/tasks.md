@@ -2,7 +2,7 @@
 
 Tasks owned by this module, copied from the top-level `tasks.md` (do not edit here; change the top-level file and re-split).
 
-- [ ] **T11 Folder scan scope** — FR: FR-1
+- [x] **T11 Folder scan scope** — FR: FR-1
   **Done when:** on the sample folder the scan lists 35 `.md` files, ignores the `.txt` silently (not in skipped list), and a fixture subfolder's `.md` is not scanned.
 - [ ] **T12 Fatal folder errors** — FR: FR-1
   **Done when:** a missing path and a path that is a file each give an error message and non-zero exit.

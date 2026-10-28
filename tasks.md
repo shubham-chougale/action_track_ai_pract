@@ -180,7 +180,7 @@ Conventions for the tests:
 - [x] **T45 Exit codes** — module: ingest-report — FR-13
   **Done when:** exit 0 with skipped notes; non-zero only for the fatal folder errors from T12.
 
-- [ ] **T46 Idempotent re-ingest** — module: persistence — FR-12, SC5
+- [x] **T46 Idempotent re-ingest** — module: persistence — FR-12, SC5
   **Done when:** a second `ingest` of the sample folder reports 0 new items, creates no duplicates, and the stored data is byte-for-byte unchanged.
 
 - [ ] **T47 Re-ingest after done and after new notes** — module: persistence — FR-12

@@ -28,7 +28,7 @@ Conventions for the tests:
   Store an item with all fields from section 6 (owners, task, original line, due/raw phrase, status + manual flag, flag + reason, sources, first-seen order) and read it back.
   **Done when:** an item written, then read in a fresh process, returns every field unchanged.
 
-- [ ] **T04 Sequential IDs** — module: persistence — FR-12
+- [x] **T04 Sequential IDs** — module: persistence — FR-12
   **Done when:** three items get IDs 1, 2, 3; deleting nothing and re-opening the store keeps them; the next new item gets 4 (never a reused number).
 
 - [ ] **T05 Update item without losing fields** — module: persistence — FR-12

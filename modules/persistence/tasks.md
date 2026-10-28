@@ -6,7 +6,7 @@ Tasks owned by this module, copied from the top-level `tasks.md` (do not edit he
   **Done when:** running in directory A then directory B creates two separate `.actiontrack/` folders; data written in A is invisible from B.
 - [x] **T03 Item store: create and read** — FR: FR-12, section 6
   **Done when:** an item written, then read in a fresh process, returns every field unchanged.
-- [ ] **T04 Sequential IDs** — FR: FR-12
+- [x] **T04 Sequential IDs** — FR: FR-12
   **Done when:** three items get IDs 1, 2, 3; deleting nothing and re-opening the store keeps them; the next new item gets 4 (never a reused number).
 - [ ] **T05 Update item without losing fields** — FR: FR-12
   **Done when:** after the update, ID and first-seen order are unchanged and earlier sources are all still present.

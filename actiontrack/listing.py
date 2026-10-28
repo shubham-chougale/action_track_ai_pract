@@ -20,14 +20,27 @@ def sort_items(items: list[Item]) -> list[Item]:
 
 def _source_label(item: Item) -> str:
     latest = max(item.sources, key=lambda s: s["date"])
-    return f"{latest['file']} ({latest['date']})"
+    label = f"{latest['file']} ({latest['date']})"
+    others = len(item.sources) - 1
+    return f"{label} +{others} more" if others else label
+
+
+def _due_label(item: Item) -> str:
+    if item.due:
+        return item.due
+    return f"{item.due_raw} ?" if item.due_raw else "-"
+
+
+def _status_label(item: Item, today: str) -> str:
+    status = item_status(item, today)
+    return f"{status} [!]" if item.flagged else status
 
 
 def render_table(items: list[Item], today: str) -> str:
     rows = [("ID", "Owner(s)", "Task", "Due", "Status", "Source")]
     for item in sort_items(items):
-        rows.append((str(item.id), owner_label(item), item.task, item.due or "-",
-                     item_status(item, today), _source_label(item)))
+        rows.append((str(item.id), owner_label(item), item.task, _due_label(item),
+                     _status_label(item, today), _source_label(item)))
     widths = [max(len(r[c]) for r in rows) for c in range(len(rows[0]))]
     lines = ["  ".join(cell.ljust(w) for cell, w in zip(r, widths)).rstrip() for r in rows]
     lines.insert(1, "  ".join("-" * w for w in widths))

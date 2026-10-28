@@ -209,7 +209,7 @@ Conventions for the tests:
 - [x] **T52 Default output order and columns** — module: item-listing — FR-16
   **Done when:** all items (including done) print sorted by due date, no-due-date last, with columns ID, Owner(s), Task, Due, Status, Source; the table ends with a total count.
 
-- [ ] **T53 Due, source and flag display** — module: item-listing — FR-16
+- [x] **T53 Due, source and flag display** — module: item-listing — FR-16
   **Done when:** unresolved date shows the raw phrase marked `?`; no date shows `-`; a flagged item shows a flag marker; a merged item shows its latest source plus the count of other mentions; a co-owned item appears under each owner.
 
 - [ ] **T54 Empty result and JSON** — module: item-listing — FR-16

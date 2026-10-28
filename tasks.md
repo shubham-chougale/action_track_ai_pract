@@ -129,7 +129,7 @@ Conventions for the tests:
 - [x] **T31 Owner: attendees-first, then global** — module: owner-resolution — FR-6
   **Done when:** a first name matching exactly one attendee resolves to them even if another person elsewhere shares it; a first name with no attendee match resolves to the single known person with that name; with no match anywhere it is "unknown".
 
-- [ ] **T32 Owner: ambiguous** — module: owner-resolution — FR-6
+- [x] **T32 Owner: ambiguous** — module: owner-resolution — FR-6
   **Done when:** `Priya` and `Rahul` in 2026-09-30-q4-offsite.md resolve to "ambiguous", keep raw text, and are flagged.
 
 - [ ] **T33 Owner: first name + initial** — module: owner-resolution — FR-6

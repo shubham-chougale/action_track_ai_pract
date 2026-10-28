@@ -1,0 +1,304 @@
+ ▐▛███▛█   Claude Code v2.1.312
+▝▜██████▀  Sonnet 5.5 · Claude Team
+ ▝▝   ▝▝   ~\Downloads\ai_pract\ai_pract
+
+
+❯ Start with T15 and do T15 to T26 from tasks.md in order (action-item          
+  extraction, due-date resolution). Tests first, then code. Mark each task [x]  
+  in both tasks.md files after its done-when test passes. Commit once per task. 
+
+● I'll start by reading tasks.md and the relevant module specs.
+
+  Searched for 1 pattern, read 4 files, ran 2 shell commands (ctrl+o to expand)
+
+● Now the sample notes referenced by the tests.
+
+  Searched for 2 patterns, ran 1 shell command (ctrl+o to expand)
+
+● Plan: actiontrack/extract.py (T15–T20) and actiontrack/duedate.py (T21–T26),
+  test first, one commit per task. T15 test:
+
+● Write(tests\test_t15_checkbox_detection.py)
+  ⎿  Wrote 31 lines to tests\test_t15_checkbox_detection.py
+       1 from pathlib import Path
+       2 
+       3 from actiontrack.extract import extract_items
+       4 
+       5 FIXTURES = Path(__file__).parent / "fixtures" / "notes"
+       6 
+       7 
+       8 def test_every_marker_and_state_is_found():
+       9     items = extract_items((FIXTURES / "markers.md").read_text(en
+         coding="utf-8"))
+     … +22 lines (ctrl+o to expand)
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● Fails as expected. Implementation (detection only for now):
+
+● Write(actiontrack\extract.py)
+  ⎿  Wrote 20 lines to actiontrack\extract.py
+       1 """Action-item extraction: find checkbox lines in a note's text.
+         """
+       2 
+       3 import re
+       4 from dataclasses import dataclass
+       5 
+       6 _CHECKBOX = re.compile(r"^\s*[-*+]\s+\[([ xX])\]\s+(\S.*?)\s*$")
+       7 
+       8 
+       9 @dataclass
+     … +11 lines (ctrl+o to expand)
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● Passing. A helper to tick both task files and commit:
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● T16 and T17 are behaviours the T15 regex already gives, so their tests should
+  pass on first run. I'm writing them anyway to pin the behaviour.
+
+  Ran 2 shell commands (ctrl+o to expand)
+
+● The T16 commit also picked up the T17 test file, because the helper stages all
+  of tests/. I'll scope the helper to each task's files from here on. Now T18:
+
+  Ran 3 shell commands (ctrl+o to expand)
+
+● Off-by-one in my test's slice lengths, not the code. Fixing the test:
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● Slicing strings is the wrong approach here. I'll compare against the full
+  lines instead.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● T19 test first:
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● Now the splitter. For T19 the owner pattern handles plain names only; the T20
+  syntaxes come in the next task.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● Python's write_text used the Windows default encoding and corrupted the
+  non-ASCII characters. I'll check the file.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● Both the en/em dashes and the curly apostrophe were mangled. I'll rewrite the
+  whole file with the Write tool as UTF-8 and use \u escapes for those
+  characters.
+
+● Write(actiontrack\extract.py)
+  ⎿  Error writing file
+
+  Read 1 file, ran 1 shell command (ctrl+o to expand)
+
+● The corrupted file is my own artifact from the failed edit, so I'll delete it
+  and write it fresh.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● Write(actiontrack\extract.py)
+  ⎿  Wrote 82 lines to actiontrack\extract.py
+       1 """Action-item extraction: find checkbox lines in a note's text 
+         and split them."""
+       2 
+       3 import re
+       4 from dataclasses import dataclass
+       5 
+       6 CODE_BLOCK = "code block"
+       7 COMMENT = "comment"
+       8 
+       9 _CHECKBOX = re.compile(r"^\s*[-*+]\s+\[([ xX])\]\s+(\S.*?)\s*$")
+     … +73 lines (ctrl+o to expand)
+
+  Ran 1 shell command (ctrl+o to expand)
+● All 80 pass, including the em-dash case. Committing T19.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● T20 test:
+
+  Ran 3 shell commands (ctrl+o to expand)
+
+● Extraction (T15–T20) is done. Now due dates, starting with T21.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● Write(actiontrack\duedate.py)
+  ⎿  Wrote 63 lines to actiontrack\duedate.py
+       1 """Due-date resolution: turn a raw due phrase into an exact date
+         , relative to the meeting date."""
+       2 
+       3 import re
+       4 from dataclasses import dataclass
+       5 from datetime import date
+       6 
+       7 from actiontrack.metadata import _MONTHS
+       8 
+       9 _LEAD = re.compile(r"^(?:by|due|on|for|until)\s+", re.I)
+     … +54 lines (ctrl+o to expand)
+
+  Ran 1 shell command (ctrl+o to expand)
+
+● T22. I'm treating next <weekday> as that weekday in the following calendar
+  week (Mon–Sun), since the spec only requires one specific date. I'll note that
+  in the summary.
+
+  Ran 3 shell commands (ctrl+o to expand)
+
+● T23 (tomorrow / EOD):
+
+  Ran 2 shell commands (ctrl+o to expand)
+
+● T24. The year-less logic exists from T21, so I expect this to pass straight
+  away.
+
+  Ran 2 shell commands (ctrl+o to expand)
+
+● T25 includes an invariant check across every phrase in the real sample notes.
+
+  Ran 5 shell commands (ctrl+o to expand)
+
+● T15–T26 are done, each with its test written first. Each task is ticked [x] in
+  both tasks.md files and committed on its own. The full suite passes (171
+  tests, excluding tests/test_t31_attendees_first.py, which I didn't write).
+
+  The code is in actiontrack/extract.py (T15–T20) and actiontrack/duedate.py
+  (T21–T26).
+
+  Four things you should know:
+  - Not my work: commits 2a736bc, aa5713a and dadca95 (T27–T29) appeared in the
+    log while I was working. There is also an untracked
+    tests/test_t31_attendees_first.py. Another session or process seems to be
+    working in this repo; I didn't touch any of it.
+  - T16 commit: it also swept in the T17 test file, because my first commit
+    helper staged all of tests/. I scoped it per task for the rest.
+  - T16, T17, T24, T26: their tests passed the first time they ran, since
+    earlier code already covered them. They now pin that behaviour so later
+    changes can't break it.
+  - next <weekday>: I resolve it to that weekday in the following Mon–Sun week,
+    so next Friday said on Tue 2026-09-01 gives 2026-09-11. The spec only asks
+    for one specific date. If you'd rather it behave like a bare weekday
+    (09-04), it's a one-line change in _resolve.
+
+  I made some judgement calls in the extractor that the spec doesn't spell out:
+  - Raw owner text: it keeps the owner exactly as written, including the @ in
+    @anita.
+  - Due-phrase prefixes: a due phrase is only recognised after by, due, on, for,
+    until or before the next …. before cutover, from 9 Oct and by 10% stay in
+    the task text.
+  - Owner pattern: a capitalised word followed by to counts as an owner, so
+    something like "Talk to legal…" would parse "Talk" as the owner. Owner
+    resolution should then flag it as unknown rather than guess. That fits the
+    never-guess rule, but it's a known gap.
+
+  No new blockers came up, so blockers.md is unchanged.
+
+✻ Brewed for 5m 35s · done 12:58 PM
+
+※ recap: Goal: build the actiontrack CLI task by task; I just finished T15–T26 (action-item extraction and due-date resolution), all tested, ticked and committed. Next action: start T27 onward, though another process already committed T27–T29, so check with you first. (disable recaps in /config)
+
+❯ Verify session 2 (T15 to T26) without changing anything:                      
+  1. Run pytest. All tests pass, and nothing from T01 to T14 regressed.         
+  2. T15 to T26 are [x] in the top-level tasks.md and in the matching module    
+  tasks.md                                                                      
+     (action-item-extraction T15-T20, due-date-resolution T21-T26). Nothing     
+  from T27                                                                      
+     onward is ticked, and no task in T15-T26 is left unticked.                 
+  3. Git log shows one commit per task (T15 to T26) and the working tree is     
+  clean.                                                                        
+  4. Tests were written for each task, and each test checks what that task's    
+  done-when                                                                     
+     line says.                                                                 
+  5. Action-item extraction on the real notes/ folder:                          
+     - Checkbox markers -, *, + with [ ], [x], [X] are all detected, including  
+  nested items.                                                                 
+     - Table rows and ACTION: lines are NOT extracted.                          
+     - The code-block and HTML-comment items in 2026-10-09-security-review.md   
+  are                                                                           
+       extracted and flagged.                                                   
+     - Owner, task and due phrase split correctly for "Priya N.", "@anita",     
+       "Anita & Rahul", "Lena (with Priya)", and lines with no owner.           
+  6. Due dates, using a fixed --today:                                          
+     - the same input gives the same output on repeated runs                    
+  7. notes/ is unmodified, and blockers.md has no new unresolved entries.       
+     Report pass or fail for each item, with evidence.                          
+
+  Ran 3 shell commands (ctrl+o to expand)
+
+● Items 1, 2 and 3 fail as worded, because other work has landed in the repo
+  since T26. Items 4 to 7 pass. The T15–T26 work itself checks out.
+
+  1. pytest: FAIL as worded, PASS for the T01–T26 scope
+  - The full suite gave 219 passed and 1 failed: tests/test_t38_quote_merge.py::
+    test_revised_quote_item_merges_across_three_notes. The T38 test is untracked
+    and actiontrack/merge.py is modified, so this looks like in-progress work
+    from another session.
+  - Running only T01–T26 (test_fixtures, test_smoke, T02–T26) gave 150 passed, 0
+    failed. Nothing from T01–T14 regressed.
+
+  2. Ticks: PARTIAL
+  - T15–T26 are [x] in the top-level tasks.md. They are also [x] in
+    modules/action-item-extraction/tasks.md and
+    modules/due-date-resolution/tasks.md. None is left unticked.
+  - The "nothing from T27 onward is ticked" condition fails. T27–T37 are ticked
+    in tasks.md and in the people-roster, owner-resolution and duplicate-merging
+    module files. Those commits (T27–T37) are not mine.
+
+  3. Git log and clean tree: PARTIAL
+  - Commits ab28f5b (T21) through ec4b785 (T26) are one per task, and T15–T20
+    sit below them in the same pattern. T16's commit also contains the T17 test
+    file.
+  - The tree is not clean: untracked conversation/conversation_T02_to_T14.txt
+    and tests/test_t39_status_latest_wins.py. Earlier there was also a modified
+    actiontrack/merge.py. I didn't make the T39 or merge changes.
+
+  4. Tests match done-when lines: PASS
+  - Each task has tests/test_tNN_*.py. I mapped them from the files and the
+    150-test run, not by re-reading every test against its done-when line.
+  - T15–T20 test all the markers and states, the offsite lines, nested items,
+    decoy flags, the Priya N. and em-dash split, and the @anita / & / (with …) /
+    Someone / none owner forms.
+  - T21–T26 test each phrase named in the done-when lines. T26 also checks the
+    code never reads the system clock.
+
+  5. Extraction on the real notes/: PASS
+  - Markers found: - 101 open and 13 done, * 2 open, + 2 open, plus one
+    comment-wrapped line. One item is indented.
+  - Counts: 118 checkbox-looking lines in the raw notes versus 119 extracted.
+    The extra one is the HTML-comment line, which starts with <!-- and so isn't
+    matched by a plain line-start search.
+  - Table row and ACTION: line: the offsite note extracted none, and the
+    "Refresh" and "circulate" lines are absent.
+  - Decoys: security-review has exactly two flagged items. The template item is
+    flagged code block and the commented item is flagged comment.
+  - Splits (owner | task | due): Priya N. | send revised quote to Acme | by 
+    Friday, @anita | audit colour contrast on the dashboard | by Mon, Anita & 
+    Rahul | agree on the component API | by Wednesday, Lena (with Priya) | 
+    collect user feedback on the prototype | by 2026-09-25, and Someone | update
+    the CRM notes | None. "Book the venue" has no owner, and the task is the
+    whole line.
+
+  6. Due dates deterministic: PASS, with a caveat
+  - Resolving all 115 sample phrases three times, once each for 2026-09-01 and
+    2026-10-05, gave identical results every time.
+  - There is no --today option in the CLI yet. cli.py has no --today handling,
+    because that belongs to a later task. resolve_due takes the meeting date and
+    never reads the clock, so I verified determinism by passing fixed dates
+    directly.
+
+  7. notes/ unmodified, no new blockers: PASS
+  - git diff HEAD -- notes is empty and git status notes is clean.
+  - blockers.md has no open B, D or X rows. Its last commits predate this
+    session.
+
+  If you want items 1 to 3 to read clean, the T27 onward work needs to land or
+  be set aside first. I haven't touched any of it.
+
+✻ Cogitated for 45s · done 1:05 PM

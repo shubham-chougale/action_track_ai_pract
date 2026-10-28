@@ -151,7 +151,7 @@ Conventions for the tests:
 - [x] **T37 Same-owner match, different-owner no match** — module: duplicate-merging — FR-11
   **Done when:** the same wording with different resolved owners stays as two items; the same owners with near-identical wording merge.
 
-- [ ] **T38 Quote item merges across three notes** — module: duplicate-merging — FR-11
+- [x] **T38 Quote item merges across three notes** — module: duplicate-merging — FR-11
   **Done when:** "Priya to send the revised quote to Acme" from 09-01, 09-08 (`Priya N.`, em dash) and 09-15 (`[x]`) becomes one item with one ID, three sources, status done.
 
 - [ ] **T39 Latest-wins for status** — module: duplicate-merging — FR-11

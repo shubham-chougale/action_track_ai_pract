@@ -63,7 +63,10 @@ def merge_mention(store: Store, m: Mention) -> str:
         if owner_key(item.owners) == key and same_task(item.task, m.task):
             if m.source in item.sources:
                 return "unchanged"
+            latest = max(src["date"] for src in item.sources)
             store.add_source(item.id, m.source)
+            if m.source["date"] >= latest:  # the latest meeting wins
+                store.update(item.id, status="done" if m.done else "open")
             return "merged"
     item = store.add(
         task=m.task, owners=m.owners, original_line=m.original_line, due=m.due,

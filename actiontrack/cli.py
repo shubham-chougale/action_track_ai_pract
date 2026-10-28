@@ -5,6 +5,7 @@ import re
 import sys
 from datetime import date
 
+from actiontrack.followup import count_unassigned, select_items
 from actiontrack.done import DoneError, describe, mark_done
 from actiontrack.ingest import ingest_folder
 from actiontrack.listing import filter_items, render_json, render_table
@@ -30,6 +31,9 @@ def build_parser() -> argparse.ArgumentParser:
     listing.add_argument("--due-before", metavar="YYYY-MM-DD", help="only items due strictly before")
     listing.add_argument("--json", action="store_true", help="machine-readable output")
     listing.add_argument("--today", help="treat this YYYY-MM-DD as today (for stable results)")
+    followup = sub.add_parser("followup", help="draft a follow-up email for one owner (never sent)")
+    followup.add_argument("owner", help="full name or a unique first name")
+    followup.add_argument("--today", help="treat this YYYY-MM-DD as today (for stable results)")
     return parser
 
 
@@ -80,6 +84,27 @@ def main(argv: list[str] | None = None) -> int:
                 return 1
         items = filter_items(store.all(), today, owner, args.status, due_before)
         print(render_json(items, today) if args.json else render_table(items, today))
+    elif args.command == "followup":
+        return _followup(args)
+    return 0
+
+
+def _followup(args) -> int:
+    try:
+        today = _iso_date(args.today, "--today") or date.today().isoformat()
+    except ValueError as err:
+        print(f"error: {err}", file=sys.stderr)
+        return 1
+    store = Store()
+    people = People()
+    people.learn(store.people_names())
+    try:
+        owner = people.find(args.owner)
+    except LookupFailure as err:
+        print(f"error: {err}", file=sys.stderr)
+        return 1
+    items = select_items(store.all(), owner, today)
+    print(f"{owner}: {len(items)} open or overdue items")
     return 0
 
 

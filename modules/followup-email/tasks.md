@@ -4,7 +4,7 @@ Tasks owned by this module, copied from the top-level `tasks.md` (do not edit he
 
 - [x] **T59 Item selection** — FR: FR-18
   **Done when:** for Priya Nair the selection has her open and overdue items only; done, unassigned, ambiguous and flagged items are excluded; co-owned items appear for each co-owner; a merged item appears once.
-- [ ] **T60 Owner resolution in followup** — FR: FR-18
+- [x] **T60 Owner resolution in followup** — FR: FR-18
   **Done when:** `followup Priya` fails with the candidate list and non-zero exit; `followup "Priya Nair"` proceeds.
 - [ ] **T61 No-items case and unassigned count** — FR: FR-18
   **Done when:** an owner with no qualifying items creates no draft and prints a message; the run prints how many unassigned items exist.

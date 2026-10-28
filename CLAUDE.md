@@ -32,7 +32,7 @@ Tech stack is not fixed by the docs; ask before choosing one.
 - **Never send email.** Only create drafts (`create_draft`). Never call
   `send_message`, `reply`, or `forward`. The user reviews and sends manually.
 - **Never crash on bad input.** Malformed notes (bad/missing date, empty file,
-  binary file, wrong extension, broken structure) are skipped and reported with
+  binary file, broken structure) are skipped and reported with
   the file name and reason. The run continues.
 - **Never guess an owner.** If a name is ambiguous or unresolvable, flag the
   item instead of assigning it.
@@ -53,7 +53,8 @@ Tech stack is not fixed by the docs; ask before choosing one.
 - **Malformed notes:** skip, report, continue (see hard rules).
 - **Markers and decoys:** handle the different checkbox markers and header
   styles; ignore checkbox-looking lines inside code blocks and comments.
-- **Non-`.md` files** (e.g. `.txt`) are not notes; skip and report.
+- **Non-`.md` files** (e.g. `.txt`) are not notes; ignore silently (not counted,
+  not reported). See FR-1.
 
 ## Module map
 

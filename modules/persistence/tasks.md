@@ -2,7 +2,7 @@
 
 Tasks owned by this module, copied from the top-level `tasks.md` (do not edit here; change the top-level file and re-split).
 
-- [ ] **T02 Data folder** — FR: FR-12
+- [x] **T02 Data folder** — FR: FR-12
   **Done when:** running in directory A then directory B creates two separate `.actiontrack/` folders; data written in A is invisible from B.
 - [ ] **T03 Item store: create and read** — FR: FR-12, section 6
   **Done when:** an item written, then read in a fresh process, returns every field unchanged.

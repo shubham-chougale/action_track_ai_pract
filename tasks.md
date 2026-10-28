@@ -20,7 +20,7 @@ Conventions for the tests:
 
 ## Phase 1 — Persistence foundation
 
-- [ ] **T02 Data folder** — module: persistence — FR-12
+- [x] **T02 Data folder** — module: persistence — FR-12
   Create/locate the hidden `.actiontrack/` folder in the current directory.
   **Done when:** running in directory A then directory B creates two separate `.actiontrack/` folders; data written in A is invisible from B.
 

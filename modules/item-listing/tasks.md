@@ -12,7 +12,7 @@ Tasks owned by this module, copied from the top-level `tasks.md` (do not edit he
   **Done when:** a filter with no matches prints `No items match`; `--json` output parses as valid JSON with the same items as the table.
 - [x] **T55 Owner filter** — FR: FR-14
   **Done when:** `--owner "Priya Nair"` works; `--owner Priya` fails with a message listing both Priyas and non-zero exit; `--owner unassigned` shows only unassigned items.
-- [ ] **T56 Status and due-before filters** — FR: FR-14
+- [x] **T56 Status and due-before filters** — FR: FR-14
   **Done when:** `--status open|done|overdue` each return the right sets; `--due-before 2026-10-01` is strictly before and excludes no-date items; `--due-before 10/01/2026` errors with non-zero exit.
 - [ ] **T57 Combined filters** — FR: FR-14
   **Done when:** owner + status + due-before together return only items satisfying all three.

@@ -218,7 +218,7 @@ Conventions for the tests:
 - [x] **T55 Owner filter** — module: item-listing — FR-14
   **Done when:** `--owner "Priya Nair"` works; `--owner Priya` fails with a message listing both Priyas and non-zero exit; `--owner unassigned` shows only unassigned items.
 
-- [ ] **T56 Status and due-before filters** — module: item-listing — FR-14
+- [x] **T56 Status and due-before filters** — module: item-listing — FR-14
   **Done when:** `--status open|done|overdue` each return the right sets; `--due-before 2026-10-01` is strictly before and excludes no-date items; `--due-before 10/01/2026` errors with non-zero exit.
 
 - [ ] **T57 Combined filters** — module: item-listing — FR-14

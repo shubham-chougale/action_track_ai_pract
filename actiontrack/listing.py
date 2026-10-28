@@ -46,11 +46,15 @@ def _owned_by(item: Item, owner: str) -> bool:
 
 
 def filter_items(items: list[Item], today: str, owner: str | None = None,
-                 status: str | None = None) -> list[Item]:
-    """Items satisfying every given filter; `owner` is already a full name or "unassigned"."""
+                 status: str | None = None, due_before: str | None = None) -> list[Item]:
+    """Items satisfying every given filter; `owner` is already a full name or "unassigned".
+
+    `due_before` is strict, and an item with no resolved due date never matches it.
+    """
     return [i for i in items
             if (owner is None or _owned_by(i, owner))
-            and (status is None or item_status(i, today) == status)]
+            and (status is None or item_status(i, today) == status)
+            and (due_before is None or (i.due is not None and i.due < due_before))]
 
 
 def render_json(items: list[Item], today: str) -> str:

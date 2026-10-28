@@ -13,7 +13,7 @@ from actiontrack.listing import filter_items, render_json, render_table
 from actiontrack.people import LookupFailure, People
 from actiontrack.report import format_report
 from actiontrack.scanner import FolderError
-from actiontrack.store import ROSTER_FILE, Store, data_dir
+from actiontrack.store import ROSTER_FILE, Store, StoreError, data_dir
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -52,6 +52,14 @@ def _iso_date(value: str | None, option: str) -> str | None:
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
+    try:
+        return _dispatch(args)
+    except StoreError as err:
+        print(f"error: {err}", file=sys.stderr)
+        return 1
+
+
+def _dispatch(args) -> int:
     if args.command == "ingest":
         try:
             result = ingest_folder(args.folder)

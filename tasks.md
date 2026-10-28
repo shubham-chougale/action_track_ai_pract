@@ -278,7 +278,7 @@ Conventions for the tests:
 - [ ] **T76 Check 9: followup drafts** — **Done when:** `followup "Priya Nair"` creates one draft, sends nothing, and a second run creates a second draft. (SC4)
   _Note: passes against a mocked connector; real Gmail draft not verified - claude -p has no Gmail connector here (blockers.md X-001)._
 - [x] **T77 Check 10: re-ingest** — **Done when:** after using `done`, a second `ingest notes` reports 0 new items and changes nothing. (SC5)
-- [ ] **T78 Never-crash sweep** — **Done when:** every command run against the sample folder, the fixtures, and a folder of garbage files produces a message or report and never a crash; the notes folder stays unmodified. (NFR)
+- [x] **T78 Never-crash sweep** — **Done when:** every command run against the sample folder, the fixtures, and a folder of garbage files produces a message or report and never a crash; the notes folder stays unmodified. (NFR)
 - [ ] **T79 Windows run** — **Done when:** T68–T78 pass on Windows from a normal terminal, including paths with spaces.
 
 ---

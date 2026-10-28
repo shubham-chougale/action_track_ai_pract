@@ -10,6 +10,18 @@ PEOPLE_FILE = "people.json"
 ROSTER_FILE = "roster.csv"
 
 
+class StoreError(Exception):
+    """A data file in .actiontrack/ is damaged."""
+
+
+def _read_json(path: Path):
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (ValueError, OSError) as err:
+        raise StoreError(f"{path.name} in {path.parent} is unreadable ({err}); "
+                         "fix or delete it (ingest the notes again to rebuild)") from err
+
+
 def data_dir(base: Path | str | None = None) -> Path:
     """Return the .actiontrack/ folder under base (default: cwd), creating it."""
     path = Path(base if base is not None else Path.cwd()) / DATA_DIR_NAME
@@ -42,9 +54,13 @@ class Store:
         self._next_id = 1
         self._items: dict[int, Item] = {}
         if self.path.exists():
-            raw = json.loads(self.path.read_text(encoding="utf-8"))
-            self._next_id = raw["next_id"]
-            self._items = {i["id"]: Item(**i) for i in raw["items"]}
+            raw = _read_json(self.path)
+            try:
+                self._next_id = raw["next_id"]
+                self._items = {i["id"]: Item(**i) for i in raw["items"]}
+            except (KeyError, TypeError) as err:
+                raise StoreError(f"{self.path.name} in {self.path.parent} has an unexpected "
+                                 f"structure ({err!r}); fix or delete it") from err
 
     def _save(self) -> None:
         raw = {"next_id": self._next_id, "items": [asdict(i) for i in self.all()]}
@@ -54,7 +70,11 @@ class Store:
         """Names learned from attendees, in first-seen order."""
         if not self._people_path.exists():
             return []
-        return json.loads(self._people_path.read_text(encoding="utf-8"))
+        names = _read_json(self._people_path)
+        if not isinstance(names, list):
+            raise StoreError(f"{self._people_path.name} in {self._people_path.parent} should be a list; "
+                             "fix or delete it")
+        return names
 
     def learn_people(self, names: list[str]) -> None:
         known = self.people_names()
